@@ -1,0 +1,10 @@
+<div class="answer-form" [formGroup]="answerForm">
+  <label>
+    Answer
+    <input type="text" [formControlName]="'value'">
+    <br>
+    Correct
+    <input type="checkbox" [formControlName]="'isCorrect'" >
+  </label>
+</div>
+<button class="button-card" (click)="addAnswer()">Add Answer</button>

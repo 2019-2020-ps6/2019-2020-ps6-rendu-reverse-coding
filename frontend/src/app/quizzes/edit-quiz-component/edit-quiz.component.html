@@ -1,0 +1,5 @@
+<div *ngIf="quiz">
+  <h1> {{ quiz.name }} </h1>
+  <app-question-list [quiz]="quiz" ></app-question-list>
+</div>
+<button class="button-card" (click)="goBack()">go back</button>

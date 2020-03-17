@@ -1,0 +1,10 @@
+<div class="card">
+  <div *ngIf="question">
+  <h1>
+    <i class="fab fa-leanpub"></i>
+    <span> {{ question.label }} </span><br>
+  </h1>
+    <app-answer-list [question]="question" ></app-answer-list>
+  </div>
+  <button class="button-card" (click)="deleteQuestion()">Delete</button>
+</div>

@@ -1,0 +1,8 @@
+<div class="card">
+  <h1>
+    <div *ngIf="answer">
+    <span> {{ answer.value }} <i *ngIf="answer.isCorrect===true" class="fas fa-check"></i></span><br>
+    <button class="button-card" (click)="deleteAnswer()"><i class="fas fa-times"></i></button>
+    </div>
+  </h1>
+</div>

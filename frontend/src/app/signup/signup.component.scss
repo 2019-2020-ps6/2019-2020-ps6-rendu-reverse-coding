@@ -1,0 +1,23 @@
+@import '../../styles/card.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 70vh;
+}
+
+.card {
+  width: 500px;
+  height: 350px;
+  margin: auto;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.alert-danger {
+  text-align: center;
+  width: 360px;
+  margin: auto;
+}
