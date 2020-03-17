@@ -19,6 +19,8 @@ import { AnswerListComponent } from './quizzes/answer-list/answer-list.component
 import { AnswerFormComponent } from './quizzes/answer-form/answer-form.component';
 import { SignupComponent } from './signup/signup.component';
 import { RegisterComponent } from './register/register.component';
+import { PlayComponent } from './play/play.component';
+import { PlayQuizComponent } from './play-quiz/play-quiz.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { RegisterComponent } from './register/register.component';
     AnswerFormComponent,
     SignupComponent,
     RegisterComponent,
+    PlayComponent,
+    PlayQuizComponent,
   ],
   imports: [
     BrowserModule,

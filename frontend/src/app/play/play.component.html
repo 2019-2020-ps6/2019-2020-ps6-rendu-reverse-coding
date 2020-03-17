@@ -1,0 +1,16 @@
+<div class="quiz-list">
+  <span> Nom  Theme  Nombre de questions </span>
+  <div class="quiz" *ngFor="let quiz of quizList">
+    <!--Inputs & Output allow communication between parent & child components.-->
+    <!--More information: https://angular.io/guide/component-interaction-->
+    <div class="card">
+      <h1>
+        <i class="fab fa-leanpub"></i>
+        <span>  {{quiz.name}} </span>
+        <span>  {{quiz.theme}} </span>
+        <span>  {{quiz.questions.length}} </span>
+      </h1>
+      <a routerLink="/play/{{quiz.id}}"><button class="button-card" >Select</button></a>
+    </div>
+  </div>
+</div>
