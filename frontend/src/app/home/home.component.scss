@@ -1,2 +1,19 @@
 @import '../../styles/card.scss';
 
+.activities{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+}
+
+div.play{
+  content: url("src/app/images/play-image.png");
+}
+div.quiz-list{
+  content: url("src/app/images/gestion-image.png");
+}
+div.stats{
+  content: url("src/app/images/statistiques-image.png");
+}

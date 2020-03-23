@@ -7,7 +7,13 @@
   margin: 1rem;
   position: relative;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
-  padding: 0 1em 1em 1em;
+  //padding: 1em 1em 1em 1em;
+}
+
+.playImage{
+  margin: 5px;
+  width: 250px;
+  height: 250px;
 }
 
 .button-card {
@@ -15,7 +21,8 @@
   border: solid 1px $blue;
   color: $blue;
   font-weight: bold;
-  padding: 0.5em 1em;
+  position: center;
+  //padding: 0.5em 1em;
 }
 
 .button-card:hover {
