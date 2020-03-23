@@ -16,7 +16,7 @@ export class EditQuizComponent implements OnInit {
               private quizService: QuizService,
               private location: Location) {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.getQuiz(id).then((quiz: Quiz) => {
+    this.getQuiz(id).then((quiz) => {
       this.quiz = quiz;
     });
   }

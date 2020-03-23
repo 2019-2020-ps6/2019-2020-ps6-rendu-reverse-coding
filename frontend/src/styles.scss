@@ -8,4 +8,7 @@ html {
 body {
   margin: 0;
   background-color: $app-background-color;
+  background-image: url("app/images/background-image.png");
+  background-repeat: repeat;
+  //background-size: cover;
 }

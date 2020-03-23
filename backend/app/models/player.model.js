@@ -1,10 +1,10 @@
 const Joi = require('joi')
 const BaseModel = require('../utils/base-model.js')
 
-module.exports = new BaseModel('User', {
+module.exports = new BaseModel('Player', {
   name: Joi.string().required(),
   surname: Joi.string().required(),
-  email: Joi.string().required(),
-  password: Joi.string().required(),
-  players: Joi.array(),
+  nbAnswer: Joi.number(),
+  correctAnswer: Joi.number(),
+  userId: Joi.number(),
 })

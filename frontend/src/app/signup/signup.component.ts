@@ -13,7 +13,6 @@ export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   users: User[];
   correct = true;
-
   constructor(public formBuilder: FormBuilder, public userService: UserService, private router: Router) {
     this.initialiazeSignUpForm();
   }
@@ -31,9 +30,8 @@ export class SignupComponent implements OnInit {
   testUserValid() {
     const userToTest: User = this.signupForm.getRawValue() as User;
     console.log(userToTest);
-    this.signupForm.reset();
-    this.getUsers().then((users: User[]) => {
-      this.users = users;
+    this.getUsers().then((u) => {
+      this.users = u.users;
       let valid = false;
       this.users.forEach((user) => {
           if (user.email === userToTest.email && user.password === userToTest.password) {
@@ -42,10 +40,13 @@ export class SignupComponent implements OnInit {
           }
       });
       this.correct = valid;
+      if (!valid) {
+        this.signupForm.controls.password.reset();
+      }
     });
   }
 
-  async getUsers(): Promise<User[]> {
+  async getUsers(): Promise<any> {
     return await this.userService.getUsers().toPromise();
   }
 }
