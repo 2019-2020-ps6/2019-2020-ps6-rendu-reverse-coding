@@ -33,6 +33,6 @@ export class RegisterComponent implements OnInit {
     console.log(userToCreate);
     this.registerForm.reset();
     this.userService.createUser(userToCreate);
-    this.router.navigate(['signup']);
+    this.router.navigate(['login']);
   }
 }

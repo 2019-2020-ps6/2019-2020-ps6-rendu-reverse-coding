@@ -54,6 +54,24 @@ router.post('/', (req, res) => {
   }
 })
 
+
+router.post('/authenticate', (req, res) => {
+  try {
+    const {email, password }= req.body;
+    const user = User.get().find(x => x.email === email && x.password === password);
+    if (!user) { return error();
+    }else{
+      res.status(201).json(user)
+    }
+  } catch (err) {
+    if (err.name === 'ValidationError') {
+      res.status(400).json(err.extra)
+    } else {
+      res.status(500).json(err)
+    }
+  }
+})
+
 router.use('/:userId/players', PlayerRouter)
 
 module.exports = router

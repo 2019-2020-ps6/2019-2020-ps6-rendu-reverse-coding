@@ -1,3 +1,10 @@
-<div class="header">
-  <a routerLink=""> MemoryQuiz </a>
-</div>
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="/home">MemoryQuiz</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <button class="btn btn-dark" type="button" (click)="logout()">Se déconnecter</button>
+    </ul>
+  </div>
+</nav>

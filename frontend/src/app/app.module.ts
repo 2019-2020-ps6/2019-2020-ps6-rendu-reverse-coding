@@ -7,7 +7,7 @@ import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
 import { QuizComponent } from './quizzes/quiz/quiz.component';
 import { HeaderComponent } from './header/header.component';
 import { QuizFormComponent } from './quizzes/quiz-form/quiz-form.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { EditQuizComponent } from './quizzes/edit-quiz-component/edit-quiz.component';
 import { AppRoutingModule} from './app.routing.module';
 import { QuestionComponent } from './quizzes/question/question.component';
@@ -17,7 +17,7 @@ import { AnswerComponent } from './quizzes/answer/answer.component';
 import { HomeComponent } from './home/home.component';
 import { AnswerListComponent } from './quizzes/answer-list/answer-list.component';
 import { AnswerFormComponent } from './quizzes/answer-form/answer-form.component';
-import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PlayComponent } from './play/play.component';
 import { PlayQuizComponent } from './play-quiz/play-quiz.component';
@@ -37,7 +37,7 @@ import { PlayQuizComponent } from './play-quiz/play-quiz.component';
     HomeComponent,
     AnswerListComponent,
     AnswerFormComponent,
-    SignupComponent,
+    LoginComponent,
     RegisterComponent,
     PlayComponent,
     PlayQuizComponent,
@@ -48,7 +48,8 @@ import { PlayQuizComponent } from './play-quiz/play-quiz.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
