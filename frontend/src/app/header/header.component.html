@@ -1,10 +1,13 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" routerLink="/home">MemoryQuiz</a>
+      <span> Bienvenue {{currentUser.name }} !</span>
     </div>
+    <a class="navbar-brand" routerLink="/home">Memory Quiz</a>
     <ul class="nav navbar-nav navbar-right">
       <button class="btn btn-dark" type="button" (click)="logout()">Se déconnecter</button>
     </ul>
   </div>
 </nav>
+
+

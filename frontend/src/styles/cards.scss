@@ -1,14 +1,25 @@
 @import "./variables";
+// Il reste à centrer verticalement
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; // ne change rien alors que devrait centrer verticalement
 
+
+}
 .card {
   background: $white;
-  border-radius: 2px;
-  display: inline-block;
-  margin: 1rem;
-  position: relative;
+  height: 500px;
+  width: 500px;
+  border-radius: 40px;
+
+
+
+  text-align: center;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
   //padding: 1em 1em 1em 1em;
 }
+
 
 .playImage{
   margin: 5px;
