@@ -8,7 +8,9 @@ import {QuizService} from '../../services/quiz.service';
   styleUrls: ['./play.component.scss']
 })
 export class PlayComponent implements OnInit {
-  public quizList: Quiz[] = [];
+  public quizList: Quiz[];
+  public quizPlayed: Quiz;
+  public quizIdSelected = 0;
   constructor(public quizService: QuizService) {
     this.quizService.quizzes$.subscribe((quiz) => this.quizList = quiz);
   }
@@ -16,4 +18,9 @@ export class PlayComponent implements OnInit {
   ngOnInit() {
   }
 
+  rowSelected(quiz: Quiz) {
+    this.quizPlayed = quiz;
+    this.quizIdSelected = quiz.id;
+    console.log(quiz);
+  }
 }

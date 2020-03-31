@@ -2,7 +2,7 @@ const { Router } = require('express')
 
 const router = new Router({ mergeParams: true })
 
-const { Answer } = require('../../../../models')
+const { Answer } = require('../../../../../models')
 
 router.get('/', (req, res) => {
   try {

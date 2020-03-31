@@ -3,6 +3,6 @@
 </div>
 <div class="quiz-list" style="overflow-x: auto">
   <div class="quiz" *ngFor="let quiz of quizList">
-        <app-quiz [quiz]="quiz" (quizDeleted)="deleteQuiz($event)" (quizSelected)="quizSelected($event)"></app-quiz>
+        <app-quiz [quiz]="quiz" (quizDeleted)="deleteQuiz($event)"></app-quiz>
   </div>
 </div>

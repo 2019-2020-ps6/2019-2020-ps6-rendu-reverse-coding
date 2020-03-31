@@ -1,16 +1,17 @@
 const { Router } = require('express')
 
-const { Quiz } = require('../../models')
+const { Quiz } = require('../../../models')
 
 const QuestionRouter = require('./questions')
-const util = require('../../utils/quiz-util')
+const util = require('../../../utils/user-util')
 
 const router = new Router()
 
 router.get('/', (req, res) => {
   try {
+    console.log(req.params)
     const quizzesWithQuestions = util.associateAllQuestions();
-    res.status(200).json({"quizzes" : quizzesWithQuestions })
+    res.status(200).json(quizzesWithQuestions)
   } catch (err) {
     res.status(500).json(err)
   }

@@ -7,11 +7,13 @@ import {User} from '../../models/user.model';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  currentUser: User;
-  constructor() { }
-
-  ngOnInit() {
+  public currentUser: User;
+  constructor() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
+
+  ngOnInit() {
+  }
+
 
 }

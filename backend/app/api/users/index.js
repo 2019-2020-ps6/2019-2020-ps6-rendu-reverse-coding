@@ -2,6 +2,7 @@ const { Router } = require('express')
 
 const { User } = require('../../models')
 const PlayerRouter = require('./players')
+const QuizRouter = require('./quizzes')
 
 const util = require('../../utils/user-util')
 
@@ -9,7 +10,7 @@ const router = new Router()
 
 router.get('/', (req, res) => {
   try {
-    const usersWithPlayers = util.associateAllPlayers()
+    const usersWithPlayers = util.associateAllPlayersQuizzes()
     res.status(200).json({"users" : usersWithPlayers })
   } catch (err) {
     res.status(500).json(err)
@@ -18,7 +19,7 @@ router.get('/', (req, res) => {
 
 router.get('/:userId', (req, res) => {
   try {
-    const userWithPlayers = util.associatePlayers(req.params.userId)
+    const userWithPlayers = util.associatePlayersQuizzes(req.params.userId)
     res.status(200).json(userWithPlayers)
   } catch (err) {
     res.status(500).json(err)
@@ -73,5 +74,5 @@ router.post('/authenticate', (req, res) => {
 })
 
 router.use('/:userId/players', PlayerRouter)
-
+router.use('/:userId/quizzes', QuizRouter)
 module.exports = router

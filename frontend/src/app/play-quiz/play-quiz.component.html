@@ -1,9 +1,10 @@
-<p>play-quiz works!</p>
-<label for="patient">
-  Theme <br>
-  <select name="patient-field" id="patient" [formControlName]="'patient'">
-    <option *ngFor="let patient of PATIENT_LIST" [value]="patient">
-      {{patient}}
+<div *ngIf="playerList">
+<label for="player">
+  Joueur <br>
+  <select name="player-field" id="player" [formControlName]="'player'">
+    <option *ngFor="let player of playerList" [value]="player">
+      {{ player.name }}
     </option>
   </select>
 </label>
+</div>

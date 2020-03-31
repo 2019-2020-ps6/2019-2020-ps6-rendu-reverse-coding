@@ -9,22 +9,19 @@ import {QuizService} from '../../../services/quiz.service';
   templateUrl: './edit-quiz.component.html',
   styleUrls: ['./edit-quiz.component.scss']
 })
-export class EditQuizComponent implements OnInit {
+export class EditQuizComponent {
   quiz: Quiz;
-
+  quizzes: Quiz[];
   constructor(private route: ActivatedRoute,
               private quizService: QuizService,
               private location: Location) {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.getQuiz(id).then((quiz) => {
-      this.quiz = quiz;
-    });
-  }
-  ngOnInit(): void {
-  }
-
-  async getQuiz(id: number): Promise<Quiz> {
-    return await this.quizService.getQuiz(id).toPromise();
+    setTimeout(() => {
+      this.quizService.quizzes$.subscribe((quiz) => {
+        this.quizzes = quiz;
+        this.quiz = this.quizzes.find((q) => q.id === id);
+      });
+    }, 300);
   }
 
   goBack(): void {

@@ -4,16 +4,16 @@ import {BehaviorSubject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
 import {Answer} from '../models/answer.model';
+import {UserService} from "./user.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AnswerService {
-  quizUrl =  'http://localhost:9428/api/quizzes/';
   answers: Answer[];
   answers$: BehaviorSubject<Answer[]> = new BehaviorSubject(this.answers);
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {
+  constructor(private route: ActivatedRoute, private http: HttpClient, private userService: UserService) {
   }
 
   init() {
@@ -24,8 +24,11 @@ export class AnswerService {
     this.answers = question.answers;
     question.answers.splice(this.answers.indexOf(answer), 1);
     this.answers$.next(this.answers);
+    this.deleteAnswerInBack(answer, question);
+  }
 
-    this.http.delete<Answer>(this.quizUrl  + question.quizId + '/questions/' + question.id + '/answers/' + answer.id).subscribe(
+  deleteAnswerInBack(answer: Answer, question: Question) {
+    this.http.delete<Answer>(this.userService.usersUrl + this.userService.curentUser.id + '/quizzes/' + question.quizId + '/questions/' + question.id + '/answers/' + answer.id).subscribe(
       (res) => console.log(res),
       (err) => console.log(err)
     );
@@ -35,12 +38,11 @@ export class AnswerService {
     question.answers.push(answer);
     this.answers = question.answers;
     this.answers$.next(this.answers);
-    this.http.post<Answer>( this.quizUrl + question.quizId + '/questions/' + question.id + '/answers',  answer).subscribe(
+    this.http.post<Answer>( this.userService.usersUrl + this.userService.curentUser.id + '/quizzes/' + question.quizId + '/questions/' + question.id + '/answers',  answer).subscribe(
       (res) => {
         answer.id = res.id;
       },
       (err) => console.log(err)
     );
   }
-
 }

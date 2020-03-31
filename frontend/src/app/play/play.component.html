@@ -1,16 +1,23 @@
-<div class="quiz-list">
-  <span> Nom  Theme  Nombre de questions </span>
-  <div class="quiz" *ngFor="let quiz of quizList">
-    <!--Inputs & Output allow communication between parent & child components.-->
-    <!--More information: https://angular.io/guide/component-interaction-->
-    <div class="card">
-      <h1>
-        <i class="fab fa-leanpub"></i>
-        <span>  {{quiz.name}} </span>
-        <span>  {{quiz.theme}} </span>
-        <span>  {{quiz.questions.length}} </span>
-      </h1>
-      <a routerLink="/play/{{quiz.id}}"><button class="button-card" >Select</button></a>
-    </div>
-  </div>
+<div class="card">
+  <table class="table table-hover table-dark">
+    <thead>
+    <tr>
+      <th class="nom" scope="col">Nom</th>
+      <th class="theme" scope="col">Theme</th>
+      <th class="nbQuestions" scope="col">Nombre de questions</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let quiz of quizList ">
+    <tr [ngStyle]="{'background-color': quiz.id === quizIdSelected ? '#4a7d7b' : ''}" (click)="rowSelected(quiz);" >
+      <td>{{quiz.name}}</td>
+      <td>{{quiz.theme}}</td>
+      <td class="nbQuestions">{{quiz.questions.length}}</td>
+    </tr>
+    </tbody>
+  </table>
 </div>
+
+<div *ngIf="quizList && quizPlayed">
+  <a routerLink="/play/{{quizPlayed.id}}"><button class="button-card" >Jouer</button></a>
+</div>
+

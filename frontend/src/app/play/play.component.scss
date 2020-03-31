@@ -1,0 +1,9 @@
+@import '../../styles/card.scss';
+
+.card {
+  width: 70%;
+}
+
+.nom, .theme, .nbQuestions {
+  width: 33%;
+}

@@ -1,23 +1,24 @@
 import { Injectable } from '@angular/core';
 import {User} from '../models/user.model';
-import {Quiz} from '../models/quiz.model';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private usersUrl =  'http://localhost:9428/api/users';
-  constructor(private http: HttpClient) { }
-
-  getUsers() {
-    return this.http.get<any>(this.usersUrl) ;
+  public usersUrl =  'http://localhost:9428/api/users/';
+  public curentUser: User;
+  constructor(private http: HttpClient) {
   }
 
   createUser(user: User) {
-    this.http.post<User>(this.usersUrl,  user).subscribe(
+    this.http.post<User>('http://localhost:9428/api/users',  user).subscribe(
       (res) => user.id = res.id,
       (err) => console.log(err)
     );
+  }
+
+  setCurrentUser() {
+    this.curentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 }

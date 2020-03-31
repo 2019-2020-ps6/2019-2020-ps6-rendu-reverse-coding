@@ -1,0 +1,26 @@
+import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Player} from '../models/player.model';
+import {BehaviorSubject} from 'rxjs';
+import {UserService} from "./user.service";
+
+@Injectable({
+  providedIn: 'root'
+})
+export class PlayerService {
+  private players: Player[];
+  public players$: BehaviorSubject<Player[]> = new BehaviorSubject(this.players);
+
+  constructor(private http: HttpClient, private userService: UserService) {
+    this.setPlayersFromUrl();
+  }
+
+  setPlayersFromUrl() {
+    this.userService.setCurrentUser();
+    this.http.get<Player[]>(this.userService.usersUrl + this.userService.curentUser.id + '/players').subscribe((players) => {
+      this.players = players;
+      this.players$.next(this.players);
+    });
+  }
+}
+

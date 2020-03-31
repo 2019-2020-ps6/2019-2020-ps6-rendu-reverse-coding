@@ -1,7 +1,7 @@
 const { Router } = require('express')
 
-const { Question } = require('../../../models')
-const util  = require('../../../utils/quiz-util')
+const { Question } = require('../../../../models')
+const util  = require('../../../../utils/user-util')
 
 const router = new Router({ mergeParams: true })
 const AnswerRouter  = require('./answers')
