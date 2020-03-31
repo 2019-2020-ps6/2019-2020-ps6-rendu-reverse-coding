@@ -1,17 +1,9 @@
-@import '../../styles/card.scss';
+@import '../../styles/cards';
 
-.container {
-  display: flex;
-  flex-direction: column;
-  height: 700px;
+
+button {
+  border-radius: 40px;
 }
-
-.card {
-  width: 500px;
-  height: 500px;
-  margin: auto;
-}
-
-.card-body {
-  text-align: center;
+input {
+  border-radius: 40px;
 }
