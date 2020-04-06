@@ -2,8 +2,30 @@
 
 .card {
   width: 70%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
 }
 
 .nom, .theme, .nbQuestions {
   width: 33%;
 }
+
+.table{
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+}
+
+.btn-primary{
+  margin: 0;
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+

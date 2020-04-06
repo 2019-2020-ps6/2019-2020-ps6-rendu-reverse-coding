@@ -11,6 +11,10 @@ body {
   background-image: url("app/images/background-image.png");
   background-size: 1920px 1080px;
   background-position: revert;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
 
+}
+
+.btn-primary{
+  border-radius: 40px;
 }
