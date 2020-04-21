@@ -6,7 +6,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {PlayerService} from '../../services/player.service';
 import {QuizGame} from '../../models/quizgame';
 import {QuizGameService} from '../../services/quiz-game.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-select-quiz-player',
@@ -15,8 +15,7 @@ import {Router} from "@angular/router";
 })
 export class SelectQuizPlayerComponent implements OnInit {
   public quizList: Quiz[];
-  public quizSelected: Quiz;
-  public quizIdSelected = -1;
+  public quizIdSelected = 0;
   public playerList: Player[];
   public playerForm: FormGroup;
   public quizGame: QuizGame = {};
@@ -30,21 +29,25 @@ export class SelectQuizPlayerComponent implements OnInit {
 
   ngOnInit() {
     this.playerForm = this.formBuilder.group({
-      playerControl: []
+      id: []
     });
   }
 
   rowSelected(quiz: Quiz) {
-    this.quizSelected = quiz;
     this.quizIdSelected = quiz.id;
-    console.log(quiz);
   }
 
   createQuizGame() {
-    this.quizGame.quiz = this.quizSelected;
+    this.quizGame.quizId = this.quizIdSelected;
     const player = this.playerForm.getRawValue();
-    this.quizGame.player = player.playerControl as Player;
+    this.quizGame.playerId = +player.id;
+    this.quizGame.nbWrongAnswer = 0;
+    this.quizGame.questionsFailed = [];
+    this.quizGame.date = new Date();
     this.quizGameService.createQuizGame(this.quizGame);
-    this.router.navigate(['select-quiz-player/' + this.quizGame.id]);
+    // A améliorer (attendre tant que l'id de quizgame est undefined)
+    setTimeout(() => {
+      this.router.navigate(['select-quiz-player/' + this.quizGame.id]);
+    }, 100);
   }
 }

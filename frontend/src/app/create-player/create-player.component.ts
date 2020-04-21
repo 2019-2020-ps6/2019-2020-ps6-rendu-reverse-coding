@@ -24,6 +24,7 @@ export class CreatePlayerComponent implements OnInit {
 
   createPlayer() {
     const playerToCreate: Player = this.newPlayerForm.getRawValue() as Player;
+    playerToCreate.quizGames = [];
     console.log(playerToCreate);
     this.newPlayerForm.reset();
     this.playerService.createNewPlayer(playerToCreate);

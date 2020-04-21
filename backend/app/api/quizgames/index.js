@@ -4,21 +4,23 @@ const router = new Router()
 
 router.get('/', (req, res) => {
     try {
-        const usersWithPlayers = util.associateAllPlayersQuizzes()
-        res.status(200).json({"users" : usersWithPlayers })
+        const quizGames = QuizGame.get()
+        res.status(200).json(quizGames)
     } catch (err) {
         res.status(500).json(err)
     }
 })
 
+/*
 router.get('/:quizGameId', (req, res) => {
     try {
-        const userWithPlayers = util.associatePlayersQuizzes(req.params.userId)
+
         res.status(200).json(userWithPlayers)
     } catch (err) {
         res.status(500).json(err)
     }
 })
+*/
 
 router.delete('/:quizGameId', (req, res) => {
     try {

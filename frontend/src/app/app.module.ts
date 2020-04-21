@@ -22,6 +22,7 @@ import { RegisterComponent } from './register/register.component';
 import { SelectQuizPlayerComponent } from './select-quiz-player/select-quiz-player.component';
 import { CreatePlayerComponent } from './create-player/create-player.component';
 import { QuizGameComponent } from './quiz-game/quiz-game.component';
+import { QuizGameQuizComponent } from './quiz-game-quiz/quiz-game-quiz.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { QuizGameComponent } from './quiz-game/quiz-game.component';
     SelectQuizPlayerComponent,
     CreatePlayerComponent,
     QuizGameComponent,
+    QuizGameQuizComponent,
   ],
   imports: [
     BrowserModule,

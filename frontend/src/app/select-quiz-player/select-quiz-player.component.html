@@ -1,3 +1,16 @@
+<form [formGroup]="playerForm">
+  Joueur <br>
+  <label>
+    <select formControlName="id" >
+      <option></option>
+      <option [value]="player.id" *ngFor="let player of playerList" >
+        {{ player.name}} {{ player.surname}}
+      </option>
+    </select>
+  </label>
+  <a routerLink="/select-quiz-player/createNewPlayer"><button class="button-card" >Nouveau joueur</button></a>
+</form>
+
 <div class="card">
   <table class="table table-hover table-dark">
     <thead>
@@ -17,19 +30,7 @@
   </table>
 </div>
 
-<form [formGroup]="playerForm">
-  Joueur <br>
-  <label>
-    <select formControlName="playerControl" >
-      <option [ngValue]="player" *ngFor="let player of playerList" >
-        {{ player.name}} {{ player.surname}}
-      </option>
-    </select>
-  </label>
-  <a routerLink="/select-quiz-player/createNewPlayer"><button class="button-card" >Nouveau joueur</button></a>
-</form>
-
-<div *ngIf="quizList && quizSelected ">
+<div *ngIf="quizIdSelected && playerForm.getRawValue().id">
   <button class="button-card" (click)="createQuizGame()">Lancer le Quiz</button>
 </div>
 

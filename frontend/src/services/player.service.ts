@@ -25,8 +25,6 @@ export class PlayerService {
 
   createNewPlayer(playerToCreate: Player) {
     playerToCreate.userId = this.userService.curentUser.id;
-    playerToCreate.nbAnswer = 0;
-    playerToCreate.correctAnswer = 0;
     this.players.push(playerToCreate);
     this.players$.next(this.players);
     this.http.post<Player>(this.userService.usersUrl + this.userService.curentUser.id + '/players',  playerToCreate).subscribe(
