@@ -10,6 +10,6 @@
         Date de création : {{ quiz.date | date:'longDate'}}
       </span>
     </h1>
-    <a routerLink="/edit-quiz/{{quiz.id}}"><button class="button-card" >Edit</button></a>
-    <button class="button-card" (click)="deleteQuiz()">Delete</button>
+    <a routerLink="/edit-quiz/{{quiz.id}}"><button class="btn btn-primary" >Edit</button></a>
+    <button class="btn btn-primary" (click)="deleteQuiz()">Delete</button>
 </div>
