@@ -17,7 +17,19 @@
   </table>
 </div>
 
-<div *ngIf="quizList && quizPlayed">
-  <a routerLink="/play/{{quizPlayed.id}}"><button class="button-card" >Jouer</button></a>
+<form [formGroup]="playerForm">
+  Joueur <br>
+  <label>
+    <select formControlName="playerControl" >
+      <option [ngValue]="player" *ngFor="let player of playerList" >
+        {{ player.name}} {{ player.surname}}
+      </option>
+    </select>
+  </label>
+  <a routerLink="/select-quiz-player/createNewPlayer"><button class="button-card" >Nouveau joueur</button></a>
+</form>
+
+<div *ngIf="quizList && quizSelected ">
+  <button class="button-card" (click)="createQuizGame()">Lancer le Quiz</button>
 </div>
 

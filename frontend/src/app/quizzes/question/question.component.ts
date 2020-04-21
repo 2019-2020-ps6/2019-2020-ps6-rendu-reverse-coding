@@ -22,20 +22,4 @@ export class QuestionComponent implements OnInit {
   deleteQuestion() {
     this.questionDeleted.emit(this.question);
   }
-
-  // get answers() {
-  //   return this.questionForm.get('answers') as FormArray;
-  // }
-  //
-  // addAnswer() {
-  //   this.answers.push(this.createAnswer());
-  // }
-  //
-  // private createAnswer() {
-  //   return this.formBuilder.group({
-  //     value: '',
-  //     isCorrect: false,
-  //   });
-  // }
-
 }

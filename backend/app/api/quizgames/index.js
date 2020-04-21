@@ -1,0 +1,52 @@
+const { Router } = require('express')
+const { QuizGame } = require('../../models')
+const router = new Router()
+
+router.get('/', (req, res) => {
+    try {
+        const usersWithPlayers = util.associateAllPlayersQuizzes()
+        res.status(200).json({"users" : usersWithPlayers })
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
+router.get('/:quizGameId', (req, res) => {
+    try {
+        const userWithPlayers = util.associatePlayersQuizzes(req.params.userId)
+        res.status(200).json(userWithPlayers)
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
+router.delete('/:quizGameId', (req, res) => {
+    try {
+        res.status(200).json(QuizGame.delete(req.params.userId))
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
+router.put('/:quizGameId', (req, res) => {
+    try {
+        res.status(200).json(QuizGame.update(req.params.userId, req.body))
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
+router.post('/', (req, res) => {
+    try {
+        const quizGame = QuizGame.create({ ...req.body })
+        res.status(201).json(quizGame)
+    } catch (err) {
+        if (err.name === 'ValidationError') {
+            res.status(400).json(err.extra)
+        } else {
+            res.status(500).json(err)
+        }
+    }
+})
+
+module.exports = router

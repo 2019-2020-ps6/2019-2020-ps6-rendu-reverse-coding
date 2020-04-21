@@ -9,3 +9,4 @@ module.exports = new BaseModel('User', {
   players: Joi.array(),
   quizzes: Joi.array(),
 })
+

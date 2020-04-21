@@ -8,3 +8,4 @@ module.exports = new BaseModel('Quiz', {
     questions: Joi.array(),
     userId: Joi.number()
 })
+

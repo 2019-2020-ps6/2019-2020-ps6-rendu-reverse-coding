@@ -7,3 +7,4 @@ module.exports = new BaseModel('Question', {
   quizId: Joi.number(),
 })
 
+ 

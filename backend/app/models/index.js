@@ -3,7 +3,8 @@ const Question = require('./question.model.js')
 const User = require('./user.model.js')
 const Answer = require('./answer.model.js')
 const Player = require('./player.model.js')
+const QuizGame = require('./quizgame.model.js')
 
 module.exports = {
-  Quiz, Question, User, Answer, Player,
+  Quiz, Question, User, Answer, Player, QuizGame
 }

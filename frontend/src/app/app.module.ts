@@ -19,8 +19,9 @@ import { AnswerListComponent } from './quizzes/answer-list/answer-list.component
 import { AnswerFormComponent } from './quizzes/answer-form/answer-form.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { PlayComponent } from './play/play.component';
-import { PlayQuizComponent } from './play-quiz/play-quiz.component';
+import { SelectQuizPlayerComponent } from './select-quiz-player/select-quiz-player.component';
+import { CreatePlayerComponent } from './create-player/create-player.component';
+import { QuizGameComponent } from './quiz-game/quiz-game.component';
 
 @NgModule({
   declarations: [
@@ -39,8 +40,9 @@ import { PlayQuizComponent } from './play-quiz/play-quiz.component';
     AnswerFormComponent,
     LoginComponent,
     RegisterComponent,
-    PlayComponent,
-    PlayQuizComponent,
+    SelectQuizPlayerComponent,
+    CreatePlayerComponent,
+    QuizGameComponent,
   ],
   imports: [
     BrowserModule,
