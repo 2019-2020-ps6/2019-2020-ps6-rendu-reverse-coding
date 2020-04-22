@@ -24,7 +24,7 @@ router.get('/:quizGameId', (req, res) => {
 
 router.delete('/:quizGameId', (req, res) => {
     try {
-        res.status(200).json(QuizGame.delete(req.params.userId))
+        res.status(200).json(QuizGame.delete(req.params.quizGameId))
     } catch (err) {
         res.status(500).json(err)
     }
@@ -32,7 +32,7 @@ router.delete('/:quizGameId', (req, res) => {
 
 router.put('/:quizGameId', (req, res) => {
     try {
-        res.status(200).json(QuizGame.update(req.params.userId, req.body))
+        res.status(200).json(QuizGame.update(req.params.quizGameId, req.body))
     } catch (err) {
         res.status(500).json(err)
     }

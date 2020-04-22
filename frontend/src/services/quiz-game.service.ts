@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {QuizGame} from '../models/quizgame';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject} from 'rxjs';
+import {Question} from "../models/question.model";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,13 @@ export class QuizGameService {
     this.setQuizGamesFromUrl();
   }
 
+  private setQuizGamesFromUrl() {
+    this.http.get<QuizGame[]>('http://localhost:9428/api/quizgames').subscribe((object) => {
+      this.quizGames = object;
+      this.quizGames$.next(this.quizGames);
+    });
+  }
+
   createQuizGame(quizGame: QuizGame) {
     this.quizGames.push(quizGame);
     this.quizGames$.next(this.quizGames);
@@ -26,10 +34,8 @@ export class QuizGameService {
     );
   }
 
-  private setQuizGamesFromUrl() {
-    this.http.get<QuizGame[]>('http://localhost:9428/api/quizgames').subscribe((object) => {
-      this.quizGames = object;
-      this.quizGames$.next(this.quizGames);
-    });
+  updateQuizGame(quizGameId: number, nbWA: number, questionsF: Question[]) {
+    this.http.put<QuizGame[]>('http://localhost:9428/api/quizgames/' + quizGameId , {nbWrongAnswer: nbWA, questionsFailed: questionsF} )
+      .subscribe();
   }
 }

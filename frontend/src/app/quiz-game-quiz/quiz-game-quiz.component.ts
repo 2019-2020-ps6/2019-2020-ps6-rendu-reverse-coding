@@ -17,8 +17,10 @@ export class QuizGameQuizComponent implements OnChanges {
   @Input()
   public quizPlayed: Quiz;
   public currentQuestion: Question;
-  public indiceCurrentQuestion = 0;
   private quizGameId: number;
+  public indiceCurrentQuestion = 0;
+  public nbWrongAnswers = 0;
+  public questionsFailed = [];
 
   constructor(private route: ActivatedRoute, private quizGameService: QuizGameService, public dialog: MatDialog,
               private router: Router) {
@@ -57,6 +59,7 @@ export class QuizGameQuizComponent implements OnChanges {
         this.currentQuestion = this.quizPlayed.questions[this.indiceCurrentQuestion];
       } else {
         this.openDialogEndQuiz();
+        this.quizGameService.updateQuizGame(this.quizGameId, this.nbWrongAnswers, this.questionsFailed);
         // Ajouter le quizgame dans la liste des quizgames du player
       }
     });
@@ -67,7 +70,10 @@ export class QuizGameQuizComponent implements OnChanges {
     if (answer.isCorrect) {
       this.openDialogEndQuestion(answer);
     } else {
-      // mettre à jour quizgame sur nbWrongAnswer et questionFailed
+      ++this.nbWrongAnswers;
+      if (!this.questionsFailed.find((q) => q.id === this.currentQuestion.id)) {
+         this.questionsFailed.push(this.currentQuestion);
+      }
       // Faire disparaitre la question
     }
 

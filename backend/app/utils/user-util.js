@@ -1,4 +1,4 @@
-const { Player, User, Quiz,Question, Answer } = require('../models')
+const { Player, User, Quiz,Question, Answer, QuizGame } = require('../models')
 
 function associateAllPlayersQuizzes() {
     const users = User.get();
@@ -89,6 +89,15 @@ function associateAnswers(questionId) {
         )};
 }
 
+function associateQuizGames(playerId) {
+    const player = Player.getById(playerId)
+    const quizgames = QuizGame.get()
+    return {...player, quizGames : quizgames.filter((quizgame) =>
+            quizgame.playerId === player.id
+        )};
+}
+
+
 module.exports = {
     associateAllPlayersQuizzes,
     associatePlayersQuizzes,
@@ -96,4 +105,5 @@ module.exports = {
     associateQuestions,
     associateAllAnswers,
     associateAnswers,
+    associateQuizGames,
 }

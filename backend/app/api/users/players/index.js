@@ -1,7 +1,7 @@
 const { Router } = require('express')
 
 const { Player } = require('../../../models')
-
+const util = require('../../../utils/user-util')
 const router = new Router({ mergeParams: true })
 
 router.get('/', (req, res) => {
@@ -14,7 +14,8 @@ router.get('/', (req, res) => {
 
 router.get('/:playerId', (req, res) => {
   try {
-    res.status(200).json(Player.getById(req.params.playerId))
+    const playerWithQuizGames = util.associateQuizGames(req.params.playerId);
+    res.status(200).json(playerWithQuizGames)
   } catch (err) {
     res.status(500).json(err)
   }
