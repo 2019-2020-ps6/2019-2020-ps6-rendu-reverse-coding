@@ -28,6 +28,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { DialogEndQuizComponent } from './dialog-end-quiz/dialog-end-quiz.component';
 import { DialogEndQuestionComponent } from './dialog-end-question/dialog-end-question.component';
 import {MatButtonModule} from "@angular/material/button";
+import { DialogEndTimerComponent } from './dialog-end-timer/dialog-end-timer.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import {MatButtonModule} from "@angular/material/button";
     QuizGameQuizComponent,
     DialogEndQuizComponent,
     DialogEndQuestionComponent,
+    DialogEndTimerComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +66,8 @@ import {MatButtonModule} from "@angular/material/button";
   ],
   entryComponents: [
     DialogEndQuizComponent,
-    DialogEndQuestionComponent
+    DialogEndQuestionComponent,
+    DialogEndTimerComponent
   ],
   providers: [
   ],
