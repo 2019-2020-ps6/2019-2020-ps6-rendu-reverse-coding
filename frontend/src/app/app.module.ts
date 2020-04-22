@@ -23,6 +23,11 @@ import { SelectQuizPlayerComponent } from './select-quiz-player/select-quiz-play
 import { CreatePlayerComponent } from './create-player/create-player.component';
 import { QuizGameComponent } from './quiz-game/quiz-game.component';
 import { QuizGameQuizComponent } from './quiz-game-quiz/quiz-game-quiz.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogEndQuizComponent } from './dialog-end-quiz/dialog-end-quiz.component';
+import { DialogEndQuestionComponent } from './dialog-end-question/dialog-end-question.component';
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -45,12 +50,21 @@ import { QuizGameQuizComponent } from './quiz-game-quiz/quiz-game-quiz.component
     CreatePlayerComponent,
     QuizGameComponent,
     QuizGameQuizComponent,
+    DialogEndQuizComponent,
+    DialogEndQuestionComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule,
+  ],
+  entryComponents: [
+    DialogEndQuizComponent,
+    DialogEndQuestionComponent
   ],
   providers: [
   ],
