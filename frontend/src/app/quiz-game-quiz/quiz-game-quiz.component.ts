@@ -38,7 +38,9 @@ export class QuizGameQuizComponent implements OnChanges {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.router.navigate([' ']);
+      if ( !result) {
+        this.router.navigate([' ']);
+      }
     });
   }
 

@@ -20,12 +20,11 @@ export class DialogEndQuizComponent implements OnInit {
   // }
 
   playAnotherQuiz() {
-    this.dialogRef.close();
     this.router.navigate(['select-quiz-player']);
+    this.dialogRef.close(true);
   }
 
   backHome() {
     this.dialogRef.close();
-    this.router.navigate([' ']);
   }
 }
