@@ -1,10 +1,9 @@
+<app-header [inQuizGame]="true" [timer]="timer"></app-header>
 <div *ngIf="quizPlayed">
   <p>{{quizPlayed.name}}</p>
   <div class="question">
-    <!--Inputs & Output allow communication between parent & child components.-->
-    <!--More information: https://angular.io/guide/component-interaction-->
     {{currentQuestion.label}}
-    <div class="answer" *ngFor="let answer of currentQuestion.answers">
+    <div class="answer" *ngFor="let answer of answersClone">
       <button class="button-card" (click)="isCorrect(answer)">{{answer.value}}</button>
     </div>
   </div>

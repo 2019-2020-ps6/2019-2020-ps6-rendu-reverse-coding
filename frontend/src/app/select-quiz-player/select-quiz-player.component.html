@@ -1,3 +1,4 @@
+<app-header></app-header>
 <form [formGroup]="playerForm">
   Joueur <br>
   <label>
@@ -33,4 +34,3 @@
 <div *ngIf="quizIdSelected && playerForm.getRawValue().id">
   <button class="button-card" (click)="createQuizGame()">Lancer le Quiz</button>
 </div>
-

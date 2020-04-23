@@ -1,11 +1,20 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-  <div class="container-fluid">
+  <div class="container-fluid" *ngIf="!inQuizGame">
     <div class="navbar-header">
       <span> Bienvenue {{currentUser.name }} !</span>
     </div>
     <a class="navbar-brand" routerLink="/home">Memory Quiz</a>
     <ul class="nav navbar-nav navbar-right">
       <button class="btn btn-dark" type="button" (click)="logout()">Se déconnecter</button>
+    </ul>
+  </div>
+  <div class="container-fluid" *ngIf="inQuizGame">
+    <div class="navbar-header">
+      <span> Quiz en cours </span>
+    </div>
+    <a class="navbar-brand">Memory Quiz</a>
+    <ul class="nav navbar-nav navbar-right">
+      <button class="btn btn-dark" type="button" (click)="leaveQuiz()">Quitter le quiz</button>
     </ul>
   </div>
 </nav>

@@ -5,9 +5,9 @@ import {Question} from '../../models/question.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {QuizGameService} from '../../services/quiz-game.service';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {DialogEndQuizComponent} from "../dialog-end-quiz/dialog-end-quiz.component";
-import {DialogEndQuestionComponent} from "../dialog-end-question/dialog-end-question.component";
-import {DialogEndTimerComponent} from "../dialog-end-timer/dialog-end-timer.component";
+import {DialogEndQuizComponent} from '../dialog-end-quiz/dialog-end-quiz.component';
+import {DialogEndQuestionComponent} from '../dialog-end-question/dialog-end-question.component';
+import {DialogEndTimerComponent} from '../dialog-end-timer/dialog-end-timer.component';
 
 @Component({
   selector: 'app-quiz-game-quiz',
@@ -18,6 +18,7 @@ export class QuizGameQuizComponent implements OnChanges {
   @Input()
   public quizPlayed: Quiz;
   public currentQuestion: Question;
+  private answersClone: Answer[];
   private quizGameId: number;
   public indiceCurrentQuestion = 0;
   public nbWrongAnswers = 0;
@@ -32,9 +33,59 @@ export class QuizGameQuizComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.quizPlayed.currentValue) {
       this.currentQuestion = this.quizPlayed.questions[this.indiceCurrentQuestion];
+      this.cloneAnswersOfCurQuestion(this.currentQuestion.answers);
       const correctAnswer = this.currentQuestion.answers.find((a) => a.isCorrect === true );
       this.startTimer(correctAnswer);
     }
+  }
+
+  private afterCloseDialog(dialogRef: MatDialogRef<DialogEndTimerComponent, any>) {
+      dialogRef.afterClosed().subscribe(result => {
+        ++this.indiceCurrentQuestion;
+        if ( this.indiceCurrentQuestion < this.quizPlayed.questions.length) {
+          this.currentQuestion = this.quizPlayed.questions[this.indiceCurrentQuestion];
+          this.cloneAnswersOfCurQuestion(this.currentQuestion.answers);
+          const correctAnswer = this.currentQuestion.answers.find((answer) => answer.isCorrect === true );
+          this.startTimer(correctAnswer);
+        } else {
+          this.openDialogEndQuiz();
+          this.quizGameService.updateQuizGame(this.quizGameId, this.nbWrongAnswers, this.questionsFailed);
+        }
+      });
+  }
+
+  private cloneAnswersOfCurQuestion(answers: Answer[]) {
+    this.answersClone = [];
+    answers.forEach((a) => {
+      this.answersClone.push(a);
+    });
+  }
+
+  isCorrect(answer: Answer) {
+    if (answer.isCorrect) {
+      this.stopTimer();
+      this.openDialogEndQuestion(answer);
+    } else {
+      this.saveLogs();
+      this.answersClone.splice(this.answersClone.indexOf(answer), 1);
+    }
+  }
+
+  private saveLogs() {
+    ++this.nbWrongAnswers;
+    if (!this.questionsFailed.find((q) => q.id === this.currentQuestion.id)) {
+      this.questionsFailed.push(this.currentQuestion);
+    }
+  }
+
+  private startTimer(correctAnswer: Answer) {
+    this.timer = setTimeout(() => {
+      this.openDialogEndTimer(correctAnswer);
+    }, 15000);
+  }
+
+  private stopTimer() {
+    clearTimeout(this.timer);
   }
 
   openDialogEndQuiz(): void {
@@ -68,46 +119,5 @@ export class QuizGameQuizComponent implements OnChanges {
     });
     this.saveLogs();
     this.afterCloseDialog(dialogRef);
-  }
-
-  private afterCloseDialog(dialogRef: MatDialogRef<DialogEndTimerComponent, any>) {
-      dialogRef.afterClosed().subscribe(result => {
-        ++this.indiceCurrentQuestion;
-        if ( this.indiceCurrentQuestion < this.quizPlayed.questions.length) {
-          this.currentQuestion = this.quizPlayed.questions[this.indiceCurrentQuestion];
-          const correctAnswer = this.currentQuestion.answers.find((answer) => answer.isCorrect === true );
-          this.startTimer(correctAnswer);
-        } else {
-          this.openDialogEndQuiz();
-          this.quizGameService.updateQuizGame(this.quizGameId, this.nbWrongAnswers, this.questionsFailed);
-        }
-      });
-  }
-
-  isCorrect(answer: Answer) {
-    if (answer.isCorrect) {
-      this.stopTimer();
-      this.openDialogEndQuestion(answer);
-    } else {
-      this.saveLogs();
-      this.currentQuestion.answers.splice(this.currentQuestion.answers.indexOf(answer), 1);
-    }
-  }
-
-  private saveLogs() {
-    ++this.nbWrongAnswers;
-    if (!this.questionsFailed.find((q) => q.id === this.currentQuestion.id)) {
-      this.questionsFailed.push(this.currentQuestion);
-    }
-  }
-
-  private startTimer(correctAnswer: Answer) {
-    this.timer = setTimeout(() => {
-      this.openDialogEndTimer(correctAnswer);
-    }, 15000);
-  }
-
-  private stopTimer() {
-    clearTimeout(this.timer);
   }
 }

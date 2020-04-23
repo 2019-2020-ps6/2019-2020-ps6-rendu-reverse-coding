@@ -20,6 +20,7 @@ export class QuizGameComponent {
         this.quizGame = quizGames.find((q) => q.id === quizGameId);
         this.quizService.quizzes$.subscribe((quizzes) => {
             this.quizPlayed = quizzes.find((q) => q.id === this.quizGame.quizId);
+            console.log(this.quizPlayed);
         });
     });
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../../models/user.model';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../services/authentication.service';
@@ -9,8 +9,11 @@ import {AuthenticationService} from '../../services/authentication.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  @Input()
+  inQuizGame: boolean;
+  @Input()
+  timer: any;
   currentUser: User;
-
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService
@@ -21,5 +24,10 @@ export class HeaderComponent {
   logout() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
+  }
+
+  leaveQuiz() {
+    clearTimeout(this.timer);
+    this.router.navigate(['/home']);
   }
 }
