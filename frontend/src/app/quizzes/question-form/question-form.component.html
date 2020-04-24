@@ -1,14 +1,47 @@
 <div class="card">
-  <h2>Create a new question</h2>
+  <h2>Ajouter une nouvelle question </h2>
   <form class="quiz-form" [formGroup]="questionForm">
     <label for="label">
-      Title <br>
+      Question <br>
       <input class="input-custom" type="text" id="label" [formControlName]="'label'">
       <br>
-        Indice <br>
-        <input type="text" [formControlName]="'clue'">
+      Indice <br>
+        <input type="text" [formControlName]="'clue'"><br>
+      Temps limite <br>
+      <select name="timer-field" id="timer"  [formControlName]="'timer'">
+        <option [value]=3600 >
+          Non
+        </option>
+        <option [value]=5>
+          5 secondes
+        </option>
+        <option [value]=10>
+          10 secondes
+        </option>
+        <option [value]=15>
+          15 secondes
+        </option>
+        <option [value]=20>
+          20 secondes
+        </option>
+        <option [value]=30>
+          30 secondes
+        </option>
+        <option [value]=40>
+          40 secondes
+        </option>
+        <option [value]=50>
+          50 secondes
+        </option>
+        <option [value]=60>
+          60 secondes
+        </option>
+        <option [value]=120>
+          2 minutes
+        </option>
+      </select>
     </label>
     <br>
-    <button type="submit" class="btn btn-primary" (click)="addQuestion()">Create</button>
+    <button type="submit" class="btn btn-primary" (click)="addQuestion()">Ajouter</button>
   </form>
 </div>

@@ -6,4 +6,5 @@ export interface Question {
     answers: Answer[];
     quizId: number;
     clue?: string;
+    timer?: number;
 }

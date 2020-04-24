@@ -81,7 +81,7 @@ export class QuizGameQuizComponent implements OnChanges {
   private startTimer(correctAnswer: Answer) {
     this.timer = setTimeout(() => {
       this.openDialogEndTimer(correctAnswer);
-    }, 15000);
+    }, this.currentQuestion.timer * 1000);
   }
 
   private stopTimer() {
