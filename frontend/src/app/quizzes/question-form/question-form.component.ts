@@ -32,10 +32,10 @@ export class QuestionFormComponent implements OnInit {
 
   addQuestion() {
     const questionToCreate: Question = this.questionForm.getRawValue() as Question;
+    questionToCreate.numero = this.quiz.questions.length + 1;
     if (questionToCreate.clue === null) {
         questionToCreate.clue = 'Pas d\'indice pour cette question.';
     }
-    console.log(questionToCreate.clue,questionToCreate.timer)
     this.initialiazeQuestionForm();
     this.questionService.addQuestion(questionToCreate, this.quiz);
   }
