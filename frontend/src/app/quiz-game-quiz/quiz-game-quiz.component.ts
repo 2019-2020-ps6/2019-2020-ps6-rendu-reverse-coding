@@ -8,6 +8,7 @@ import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {DialogEndQuizComponent} from '../dialog-end-quiz/dialog-end-quiz.component';
 import {DialogEndQuestionComponent} from '../dialog-end-question/dialog-end-question.component';
 import {DialogEndTimerComponent} from '../dialog-end-timer/dialog-end-timer.component';
+import {DialogClueComponent} from '../dialog-clue/dialog-clue.component';
 
 @Component({
   selector: 'app-quiz-game-quiz',
@@ -41,9 +42,8 @@ export class QuizGameQuizComponent implements OnChanges {
 
   private afterCloseDialog(dialogRef: MatDialogRef<DialogEndTimerComponent, any>) {
       dialogRef.afterClosed().subscribe(result => {
-        ++this.indiceCurrentQuestion;
-        if ( this.indiceCurrentQuestion < this.quizPlayed.questions.length) {
-          this.currentQuestion = this.quizPlayed.questions[this.indiceCurrentQuestion];
+        if ( this.indiceCurrentQuestion + 1 < this.quizPlayed.questions.length) {
+          this.currentQuestion = this.quizPlayed.questions[++this.indiceCurrentQuestion];
           this.cloneAnswersOfCurQuestion(this.currentQuestion.answers);
           const correctAnswer = this.currentQuestion.answers.find((answer) => answer.isCorrect === true );
           this.startTimer(correctAnswer);
@@ -119,5 +119,13 @@ export class QuizGameQuizComponent implements OnChanges {
     });
     this.saveLogs();
     this.afterCloseDialog(dialogRef);
+  }
+
+  openDialogClue() {
+    this.dialog.open(DialogClueComponent, {
+      width: '400px',
+      height: '200px',
+      data: {clue: this.currentQuestion.clue}
+    });
   }
 }

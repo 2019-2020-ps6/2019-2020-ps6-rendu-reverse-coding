@@ -1,13 +1,15 @@
 .quiz-list {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  justify-content: space-around;
 }
 
-.form{
+.mes-quizz{
+  background: orangered;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  flex: 2;
+}
+
+.quiz-form{
+  background: yellowgreen;
 }

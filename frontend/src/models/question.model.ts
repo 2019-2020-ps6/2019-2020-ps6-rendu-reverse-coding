@@ -5,4 +5,5 @@ export interface Question {
     label: string;
     answers: Answer[];
     quizId: number;
+    clue?: string;
 }

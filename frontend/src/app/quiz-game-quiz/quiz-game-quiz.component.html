@@ -2,9 +2,12 @@
 <div *ngIf="quizPlayed">
   <p>{{quizPlayed.name}}</p>
   <div class="question">
-    {{currentQuestion.label}}
+    <h2> Question {{ indiceCurrentQuestion+1 }}/{{ quizPlayed.questions.length }} : {{currentQuestion.label}} </h2>
     <div class="answer" *ngFor="let answer of answersClone">
       <button class="button-card" (click)="isCorrect(answer)">{{answer.value}}</button>
+    </div>
+    <div class="clue">
+      <button class="button-card" (click)="openDialogClue()"><i class="far fa-lightbulb"> Indice </i></button>
     </div>
   </div>
 </div>

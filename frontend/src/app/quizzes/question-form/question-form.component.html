@@ -4,6 +4,9 @@
     <label for="label">
       Title <br>
       <input class="input-custom" type="text" id="label" [formControlName]="'label'">
+      <br>
+        Indice <br>
+        <input type="text" [formControlName]="'clue'">
     </label>
     <br>
     <button type="submit" class="btn btn-primary" (click)="addQuestion()">Create</button>
