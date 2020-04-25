@@ -30,9 +30,11 @@ import {MatButtonModule} from '@angular/material/button';
 import { DialogEndTimerComponent } from './dialog-end-timer/dialog-end-timer.component';
 import { DialogClueComponent } from './dialog-clue/dialog-clue.component';
 import { DialogDeleteQuizComponent } from './quizzes/dialog-delete-quiz/dialog-delete-quiz.component';
+import {CreationModifQuiz} from './quizzes/creation-modif-quiz/creation-modif-quiz';
 
 @NgModule({
   declarations: [
+    CreationModifQuiz,
     AppComponent,
     QuizListComponent,
     HeaderComponent,
