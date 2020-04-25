@@ -1,24 +1,31 @@
 <app-header></app-header>
-<form [formGroup]="playerForm">
-  Joueur <br>
-  <label>
+
+<main class="flex-container" role="main" >
+  <section id="choixJoueur">
+  <form [formGroup]="playerForm">
+    <h5>1. choix du joueur</h5> <br>
+    <label>
     <select formControlName="id" >
       <option></option>
       <option [value]="player.id" *ngFor="let player of playerList" >
         {{ player.name}} {{ player.surname}}
       </option>
     </select>
-  </label>
-  <a routerLink="/select-quiz-player/createNewPlayer"><button class="button-card" >Nouveau joueur</button></a>
-</form>
+    </label>
+  </form>
+  <a routerLink="/select-quiz-player/createNewPlayer"><button class="btn btn-primary" id="nouveauJoueur" >Nouveau joueur</button></a>
+  </section>
 
-<div class="card">
+
+  <section id="choixQuiz">
+    <h5>2. choix du quiz</h5>
   <table class="table table-hover table-dark">
     <thead>
     <tr>
       <th class="nom" scope="col">Nom</th>
       <th class="theme" scope="col">Theme</th>
       <th class="nbQuestions" scope="col">Nombre de questions</th>
+      <th class="ajouterQuiz" scope="col"><a routerLink="/quiz-list"><button class="btn btn-primary" >+</button></a></th>
     </tr>
     </thead>
     <tbody *ngFor="let quiz of quizList ">
@@ -26,11 +33,13 @@
       <td>{{quiz.name}}</td>
       <td>{{quiz.theme}}</td>
       <td class="nbQuestions">{{quiz.questions.length}}</td>
+      <td><a routerLink="/edit-quiz/{{quiz.id}}"><button class="btn btn-primary" >modifier</button></a></td>
     </tr>
     </tbody>
   </table>
-</div>
+    <footer>
+    <button *ngIf="quizIdSelected && playerForm.getRawValue().id"class="btn btn-primary" (click)="createQuizGame()">Lancer le Quiz</button>
+    </footer>
+  </section>
 
-<div *ngIf="quizIdSelected && playerForm.getRawValue().id">
-  <button class="button-card" (click)="createQuizGame()">Lancer le Quiz</button>
-</div>
+</main>
