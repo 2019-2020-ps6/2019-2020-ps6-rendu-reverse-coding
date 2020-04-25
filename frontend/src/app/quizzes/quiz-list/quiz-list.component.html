@@ -1,34 +1,34 @@
-<app-header></app-header>
-<div class="quiz-list">
+<!-- <app-header></app-header> -->
+<div class="quiz-list" >
   <div class="mes-quizz">
-      <h2> Mes quizz </h2>
-      <table class="table table-hover table-dark">
-        <thead>
-        <tr>
-          <th class="nom" scope="col">Nom</th>
-          <th class="theme" scope="col">Theme</th>
-          <th class="nbQuestions" scope="col">Nombre de questions</th>
-          <th class="creationDate" scope="col">Date de création</th>
-          <th class="edit" scope="col"></th>
-          <th class="delete" scope="col"></th>
-        </tr>
-        </thead>
-        <tbody *ngFor="let quiz of quizList ">
-          <tr>
-            <td>{{quiz.name}}</td>
-            <td>{{quiz.theme}}</td>
-            <td class="nbQuestions">{{quiz.questions.length}}</td>
-            <td class="creationDate">{{quiz.date | date:'longDate'}}</td>
-            <td>
-              <a routerLink="/edit-quiz/{{quiz.id}}">
-              <button class="btn btn-primary" >Modifier</button>
-              </a>
-            </td>
-            <td>
-              <button class="btn btn-primary" (click)="deleteQuiz(quiz)">Supprimer</button>
-            </td>
-          </tr>
-      </table>
+    <!-- <h2> Mes quizz </h2> -->
+    <table class="table table-hover table-dark">
+      <thead>
+      <tr>
+        <th class="nom" scope="col" bgcolor="#bdb76b">Nom</th>
+        <th class="theme" scope="col" bgcolor="#bdb76b">Theme</th>
+        <th class="nbQuestions" scope="col" bgcolor="#bdb76b">Nombre de questions</th>
+        <th class="creationDate" scope="col" bgcolor="#bdb76b">Date de création</th>
+        <th class="edit" scope="col" bgcolor="#bdb76b"></th>
+        <th class="delete" scope="col" bgcolor="#bdb76b"></th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let quiz of quizList ">
+      <tr bgcolor="#b9bd6b">
+        <td>{{quiz.name}}</td>
+        <td>{{quiz.theme}}</td>
+        <td class="nbQuestions">{{quiz.questions.length}}</td>
+        <td class="creationDate">{{quiz.date | date:'longDate'}}</td>
+        <td>
+          <a routerLink="/edit-quiz/{{quiz.id}}">
+            <button class="btn btn-primary" >Modifier</button>
+          </a>
+        </td>
+        <td>
+          <button class="btn btn-primary" (click)="deleteQuiz(quiz)">Supprimer</button>
+        </td>
+      </tr>
+    </table>
   </div>
   <div class="quiz-form">
     <app-quiz-form></app-quiz-form>

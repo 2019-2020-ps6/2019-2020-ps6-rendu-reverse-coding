@@ -1,15 +1,21 @@
 .quiz-list {
   display: flex;
-  justify-content: space-around;
+  height: fill-available;
 }
 
-.mes-quizz{
-  background: orangered;
+
+.mes-quizz {
+  color: black;
+  background-color: white;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 0, 0.5), rgba(0, 0, 255, 0.5)), url('../../images/fondGestion.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: initial;
   display: flex;
   flex-direction: column;
   flex: 2;
 }
 
-.quiz-form{
+.quiz-form {
   background: yellowgreen;
 }
