@@ -1,3 +1,13 @@
 .question-list {
-  display: block;
+  display: flex;
+}
+
+.questions {
+  background: orangered;
+  display: flex;
+  flex-direction: column;
+}
+
+.question-form{
+  background: yellowgreen;
 }

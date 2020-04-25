@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent },
-  {path: 'quiz-list', component: QuizListComponent , canActivate: [AuthGuard]},
+  {path: 'gestion', component: QuizListComponent , canActivate: [AuthGuard]},
   {path: 'edit-quiz/:id', component: EditQuizComponent , canActivate: [AuthGuard]},
   {path: 'select-quiz-player', component: SelectQuizPlayerComponent, canActivate: [AuthGuard] },
   {path: 'select-quiz-player/createNewPlayer', component: CreatePlayerComponent, canActivate: [AuthGuard] },

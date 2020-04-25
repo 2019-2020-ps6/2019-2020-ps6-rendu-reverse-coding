@@ -29,7 +29,7 @@
     </tr>
     </thead>
     <tbody *ngFor="let quiz of quizList ">
-    <tr [ngStyle]="{'background-color': quiz.id === quizIdSelected ? '#4a7d7b' : ''}" (click)="rowSelected(quiz);" >
+    <tr *ngIf="quiz.questions.length > 0" [ngStyle]="{'background-color': quiz.id === quizIdSelected ? '#4a7d7b' : ''}" (click)="rowSelected(quiz);" >
       <td>{{quiz.name}}</td>
       <td>{{quiz.theme}}</td>
       <td class="nbQuestions">{{quiz.questions.length}}</td>

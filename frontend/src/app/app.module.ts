@@ -4,7 +4,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
-import { QuizComponent } from './quizzes/quiz/quiz.component';
 import { HeaderComponent } from './header/header.component';
 import { QuizFormComponent } from './quizzes/quiz-form/quiz-form.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
@@ -27,14 +26,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogEndQuizComponent } from './dialog-end-quiz/dialog-end-quiz.component';
 import { DialogEndQuestionComponent } from './dialog-end-question/dialog-end-question.component';
-import {MatButtonModule} from "@angular/material/button";
+import {MatButtonModule} from '@angular/material/button';
 import { DialogEndTimerComponent } from './dialog-end-timer/dialog-end-timer.component';
+import { DialogClueComponent } from './dialog-clue/dialog-clue.component';
+import { DialogDeleteQuizComponent } from './quizzes/dialog-delete-quiz/dialog-delete-quiz.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuizListComponent,
-    QuizComponent,
     HeaderComponent,
     QuizFormComponent,
     EditQuizComponent,
@@ -54,6 +54,8 @@ import { DialogEndTimerComponent } from './dialog-end-timer/dialog-end-timer.com
     DialogEndQuizComponent,
     DialogEndQuestionComponent,
     DialogEndTimerComponent,
+    DialogClueComponent,
+    DialogDeleteQuizComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,9 @@ import { DialogEndTimerComponent } from './dialog-end-timer/dialog-end-timer.com
   entryComponents: [
     DialogEndQuizComponent,
     DialogEndQuestionComponent,
-    DialogEndTimerComponent
+    DialogEndTimerComponent,
+    DialogClueComponent,
+    DialogDeleteQuizComponent
   ],
   providers: [
   ],

@@ -24,14 +24,19 @@ export class QuestionFormComponent implements OnInit {
   private initialiazeQuestionForm() {
     this.questionForm = this.formBuilder.group({
       label: [''],
-      answers: this.formBuilder.array([])
+      answers: this.formBuilder.array([]),
+      clue: [],
+      timer: [3600]
     });
   }
 
   addQuestion() {
     const questionToCreate: Question = this.questionForm.getRawValue() as Question;
-    this.questionForm.reset();
-    // console.log(questionToCreate);
+    questionToCreate.numero = this.quiz.questions.length + 1;
+    if (questionToCreate.clue === null) {
+        questionToCreate.clue = 'Pas d\'indice pour cette question.';
+    }
+    this.initialiazeQuestionForm();
     this.questionService.addQuestion(questionToCreate, this.quiz);
   }
 }

@@ -1,8 +1,5 @@
-<app-answer-form [question]="question"></app-answer-form>
 <div class="answer-list">
-  <div class="question" *ngFor="let answer of answerList">
-    <!--Inputs & Output allow communication between parent & child components.-->
-    <!--More information: https://angular.io/guide/component-interaction-->
+  <ul class="list-group list-group-flush" *ngFor="let answer of answerList">
     <app-answer [answer]="answer" (answerDeleted)="deleteAnswer($event)" ></app-answer>
-  </div>
+  </ul>
 </div>
