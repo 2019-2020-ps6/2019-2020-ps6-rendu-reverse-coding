@@ -6,7 +6,8 @@ const router = new Router({ mergeParams: true })
 
 router.get('/', (req, res) => {
   try {
-    res.status(200).json(Player.get())
+    const playersWithQuizGames = util.associateAllQuizGames();
+    res.status(200).json(playersWithQuizGames)
   } catch (err) {
     res.status(500).json(err)
   }

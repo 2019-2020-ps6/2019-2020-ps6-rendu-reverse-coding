@@ -10,12 +10,14 @@ import {SelectQuizPlayerComponent} from './select-quiz-player/select-quiz-player
 import {AuthGuard} from './auth.guard';
 import {CreatePlayerComponent} from './create-player/create-player.component';
 import {QuizGameComponent} from './quiz-game/quiz-game.component';
+import {ResultatsComponent} from './resultats/resultats.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent },
   {path: 'gestion', component: QuizListComponent , canActivate: [AuthGuard]},
+  {path: 'resultats', component: ResultatsComponent , canActivate: [AuthGuard]},
   {path: 'edit-quiz/:id', component: EditQuizComponent , canActivate: [AuthGuard]},
   {path: 'select-quiz-player', component: SelectQuizPlayerComponent, canActivate: [AuthGuard] },
   {path: 'select-quiz-player/createNewPlayer', component: CreatePlayerComponent, canActivate: [AuthGuard] },

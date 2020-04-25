@@ -89,6 +89,17 @@ function associateAnswers(questionId) {
         )};
 }
 
+function associateAllQuizGames() {
+    const players = Player.get();
+    const quizgames = QuizGame.get();
+    const playersWithQuizGames = players.map((player) => {
+        return {...player, quizGames: quizgames.filter((quizGame) =>
+                quizGame.playerId === player.id
+            )}
+    });
+    return playersWithQuizGames;
+}
+
 function associateQuizGames(playerId) {
     const player = Player.getById(playerId)
     const quizgames = QuizGame.get()
@@ -105,5 +116,6 @@ module.exports = {
     associateQuestions,
     associateAllAnswers,
     associateAnswers,
+    associateAllQuizGames,
     associateQuizGames,
 }

@@ -1,0 +1,18 @@
+<app-header></app-header>
+<div class="resultats">
+  <h1> Résultats </h1>
+  <div class="players" *ngIf="playerList">
+    <form [formGroup]="playerForm">
+      <label>
+        <select formControlName="player">
+          <option></option>
+          <ng-container *ngFor="let player of playerList">
+            <option [value]="player" *ngIf="player.quizGames.length > 0">
+              {{ player.name}} {{ player.surname }}
+            </option>
+          </ng-container>
+        </select>
+      </label>
+    </form>
+  </div>
+</div>

@@ -20,6 +20,7 @@ export class PlayerService {
     this.http.get<Player[]>(this.userService.usersUrl + this.userService.curentUser.id + '/players').subscribe((players) => {
       this.players = players;
       this.players$.next(this.players);
+      console.log(this.players);
     });
   }
 

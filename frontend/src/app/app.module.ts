@@ -30,6 +30,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { DialogEndTimerComponent } from './dialog-end-timer/dialog-end-timer.component';
 import { DialogClueComponent } from './dialog-clue/dialog-clue.component';
 import { DialogDeleteQuizComponent } from './quizzes/dialog-delete-quiz/dialog-delete-quiz.component';
+import { ResultatsComponent } from './resultats/resultats.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { DialogDeleteQuizComponent } from './quizzes/dialog-delete-quiz/dialog-d
     DialogEndTimerComponent,
     DialogClueComponent,
     DialogDeleteQuizComponent,
+    ResultatsComponent,
   ],
   imports: [
     BrowserModule,
