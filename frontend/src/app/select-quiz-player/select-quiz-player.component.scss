@@ -1,9 +1,8 @@
 @import '../../styles/cards.scss';
 
 .flex-container{
-  color: white;
+  color: black;
   text-align: center;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,27 +10,27 @@
 
 }
 
-#choixJoueur{
+#main-section{
   margin-top: 5%;
   width: 70%;
-  background-color: #343a40;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
+  background-color: white;
+  border-radius: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 
+#choixJoueur{
+
+}
 
 #choixQuiz {
-  width: 70%;
-  background-color: #343a40;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-
 
 }
 
 select{
   border-radius: 40px;
+  border-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   cursor:pointer;
   appearance: none;
   width: 200px;
@@ -40,21 +39,19 @@ select{
 
 }
 
-table{
-  border-radius: 40px;
-  height:140px;
-  max-height: 150px;
-}
+table,th,td{
+  border:none;
 
-tbody{
-  overflow: scroll;
 }
 
 
+button{
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
 #nouveauJoueur{ width: 200px;}
 
-button{ margin-bottom: 20px; }
 
 .nom, .theme, .nbQuestions { width: 33%; }
 

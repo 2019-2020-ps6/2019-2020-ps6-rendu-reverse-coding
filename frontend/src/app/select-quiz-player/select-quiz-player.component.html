@@ -1,6 +1,7 @@
 <app-header></app-header>
 
 <main class="flex-container" role="main" >
+  <section id="main-section">
   <section id="choixJoueur">
   <form [formGroup]="playerForm">
     <h5>1. Choix du joueur</h5>
@@ -18,8 +19,8 @@
 
 
   <section id="choixQuiz">
-    <h5>2. Choix du quiz</h5>
-  <table class="table table-hover table-dark">
+    <h5>2. choix du quiz</h5>
+  <table class="table table-hover">
     <thead>
     <tr>
       <th class="nom" scope="col">Nom</th>
@@ -29,7 +30,7 @@
     </tr>
     </thead>
     <tbody *ngFor="let quiz of quizList ">
-    <tr *ngIf="quiz.questions.length > 0" [ngStyle]="{'background-color': quiz.id === quizIdSelected ? '#4a7d7b' : ''}" (click)="rowSelected(quiz);" >
+    <tr *ngIf="quiz.questions.length > 0" [ngStyle]="{'background-color': quiz.id === quizIdSelected ? '#ececec' : ''}" (click)="rowSelected(quiz);" >
       <td>{{quiz.name}}</td>
       <td>{{quiz.theme}}</td>
       <td class="nbQuestions">{{quiz.questions.length}}</td>
@@ -41,5 +42,5 @@
     <button *ngIf="quizIdSelected && playerForm.getRawValue().id"class="btn btn-primary" (click)="createQuizGame()">Lancer le Quiz</button>
     </footer>
   </section>
-
+  </section>
 </main>

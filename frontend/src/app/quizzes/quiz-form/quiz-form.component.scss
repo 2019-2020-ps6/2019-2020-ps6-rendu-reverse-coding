@@ -1,30 +1,43 @@
 @import '../../../styles/cards';
 
-.card2{
+.flex-container{
+  color: black;
+  text-align: center;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  //background-image: radial-gradient(#53575E, #619293);
-  background-image:url("../../images/Fournitures2.jpg");
-  //background-color: darkslategrey;
-  width: auto;
-  height: stretch;
-  background-repeat:no-repeat;
-  background-size: auto;
-  background-position:center center;
-  margin: auto;
+  align-items: center;
+  justify-content: center;
+
 }
 
-.button{
-  text-align: center;
+#main-section{
+  margin-top: 5%;
+  width: 70%;
+  background-color: white;
+  border-radius: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+input{
+  width: 250px;
+  border-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 select{
-  margin-top: 20px;
+  border-radius: 40px;
+  border-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  cursor:pointer;
+  appearance: none;
+  width: 250px;
+  height: 45px;
+  padding: 5px;
+
+}
+
+button{
+
   margin-bottom: 20px;
-  text-align-last:right;
-  padding-right: 43px;
-  display: grid;
-  margin-left: 35px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
