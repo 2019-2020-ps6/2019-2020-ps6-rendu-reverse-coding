@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
 import { HeaderComponent } from './header/header.component';
 import { QuizFormComponent } from './quizzes/quiz-form/quiz-form.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import { EditQuizComponent } from './quizzes/edit-quiz-component/edit-quiz.component';
 import { AppRoutingModule} from './app.routing.module';
 import { QuestionComponent } from './quizzes/question/question.component';
@@ -31,9 +31,11 @@ import { DialogEndTimerComponent } from './dialog-end-timer/dialog-end-timer.com
 import { DialogClueComponent } from './dialog-clue/dialog-clue.component';
 import { DialogDeleteQuizComponent } from './quizzes/dialog-delete-quiz/dialog-delete-quiz.component';
 import { ResultatsComponent } from './resultats/resultats.component';
+import {CreationModifQuiz} from './quizzes/creation-modif-quiz/creation-modif-quiz';
 
 @NgModule({
   declarations: [
+    CreationModifQuiz,
     AppComponent,
     QuizListComponent,
     HeaderComponent,
