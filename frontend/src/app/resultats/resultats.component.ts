@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
-import {PlayerService} from "../../services/player.service";
-import {Player} from "../../models/player.model";
-import {Quiz} from "../../models/quiz.model";
-import {QuizService} from "../../services/quiz.service";
-import {QuizGame} from "../../models/quizgame";
+import {PlayerService} from '../../services/player.service';
+import {Player} from '../../models/player.model';
+import {Quiz} from '../../models/quiz.model';
+import {QuizService} from '../../services/quiz.service';
+import {QuizGame} from '../../models/quizgame';
 
 @Component({
   selector: 'app-resultats',
