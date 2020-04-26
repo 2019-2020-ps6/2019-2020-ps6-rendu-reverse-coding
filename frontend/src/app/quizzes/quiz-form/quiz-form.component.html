@@ -1,7 +1,9 @@
-<div class="card2" >
+<app-header></app-header>
+<main class="flex-container" role="main" >
+<section id="main-section" >
   <form class="quiz-form" [formGroup]="quizForm">
     <label for="name">
-      <input class="form-control" type="text" id="name" [formControlName]="'name'" placeholder="           Nom du Quiz">
+      <input class="form-control" type="text" id="name" [formControlName]="'name'" placeholder="Nom du Quiz">
     </label>
     <br>
     <label for="theme" >
@@ -13,10 +15,13 @@
       </select>
     </label>
     <br>
-    <div class="button">
+    <section class="button">
     <button type="submit" class="btn btn-primary" (click)="addQuiz()">Créer le Quiz</button>
-    </div>
+    </section>
   </form>
-</div>
+</section>
+</main>
+
+
 <!-- Uncomment below to see your form structure and how it changes-->
 <!-- <br><br>{{quizForm.getRawValue() | json}} -->
