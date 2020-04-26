@@ -1,5 +1,6 @@
 <app-header></app-header>
 <div class="resultats">
+<div class="mat-card">
   <h1> Résultats </h1>
   <div class="players" *ngIf="playerList">
     <h3> Sélectionnez le joueur :</h3>
@@ -33,6 +34,7 @@
   <div class="noQuizSelected" *ngIf="!dataQuizSelected && quizzesPlayed">
     <p> Veuillez sélectionner un quiz. </p>
   </div>
+</div>
   <div class="quizzesPlayed" *ngIf="dataQuizSelected && quizzesPlayed">
       <ng-container *ngFor="let data of dataQuizSelected">
           Date : {{ data.date | date:'longDate' }} <br>
