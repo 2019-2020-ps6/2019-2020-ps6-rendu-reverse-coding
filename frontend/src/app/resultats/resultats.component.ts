@@ -22,17 +22,21 @@ export class ResultatsComponent {
   }
 
   changePlayer(player: Player) {
-    this.quizGamesPlayer = player.quizGames;
-    const arrayQuizzes = [];
-    this.quizGamesPlayer.forEach((quizGame) => {
+    if (player) {
+      this.quizGamesPlayer = player.quizGames;
+      const arrayQuizzes = [];
+      this.quizGamesPlayer.forEach((quizGame) => {
         this.quizService.quizzes$.subscribe((quizzes) => {
           const quiz = quizzes.find((q) => q.id === quizGame.quizId);
           if (!arrayQuizzes.includes(quiz)) {
             arrayQuizzes.push(quiz);
           }
         });
-    });
-    this.quizzesPlayed = arrayQuizzes;
+      });
+      this.quizzesPlayed = arrayQuizzes;
+    } else {
+      this.quizzesPlayed = undefined;
+    }
   }
 
   changeQuiz(quizSelected: Quiz) {
