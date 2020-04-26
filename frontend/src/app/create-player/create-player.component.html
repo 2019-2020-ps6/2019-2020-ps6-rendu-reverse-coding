@@ -1,6 +1,6 @@
 <app-header></app-header>
-<div class="card-container">
-  <div class="card">
+<main class="flex-container" role="main" >
+  <section id="main-section">
     <div class="card-body">
       <h3 class="card-title">Créer un nouveau joueur</h3><br>
       <div class="register-form" [formGroup]="newPlayerForm">
@@ -25,5 +25,5 @@
       </div><br>
       <button type="button" class="btn btn-primary" (click)="createPlayer()">Valider</button>
     </div>
-  </div>
-</div>
+  </section>
+</main>
