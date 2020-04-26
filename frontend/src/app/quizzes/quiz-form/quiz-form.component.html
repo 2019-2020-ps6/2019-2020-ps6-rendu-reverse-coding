@@ -15,9 +15,11 @@
       </select>
     </label>
     <br>
-    <section class="button">
-    <button type="submit" class="btn btn-primary" (click)="addQuiz()">Créer le Quiz</button>
-    </section>
+    <div class="button">
+       <a routerLink="/modif-quiz">
+        <button type="submit" class="btn btn-primary" (click)="addQuiz()">Créer le Quiz</button>
+       </a>
+    </div>
   </form>
 </section>
 </main>
