@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
@@ -67,6 +67,7 @@ import { ResultatsComponent } from './resultats/resultats.component';
     BrowserAnimationsModule,
     MatDialogModule,
     MatButtonModule,
+    FormsModule,
   ],
   entryComponents: [
     DialogEndQuizComponent,

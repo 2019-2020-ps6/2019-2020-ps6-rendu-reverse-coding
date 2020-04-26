@@ -2,17 +2,46 @@
 <div class="resultats">
   <h1> Résultats </h1>
   <div class="players" *ngIf="playerList">
-    <form [formGroup]="playerForm">
-      <label>
-        <select formControlName="player">
-          <option></option>
-          <ng-container *ngFor="let player of playerList">
-            <option [value]="player" *ngIf="player.quizGames.length > 0">
-              {{ player.name}} {{ player.surname }}
-            </option>
-          </ng-container>
-        </select>
-      </label>
-    </form>
+    <h3> Sélectionnez le joueur :</h3>
+    <label>
+      <select [ngModel]="playerList" (ngModelChange)="changePlayer($event)">
+        <option></option>
+        <ng-container *ngFor="let player of playerList">
+          <option [ngValue]="player" *ngIf="player.quizGames.length > 0">
+            {{ player.name}} {{ player.surname }}
+          </option>
+        </ng-container>
+      </select>
+    </label>
   </div>
+  <div class="noPlayerSelected" *ngIf="!quizzesPlayed">
+    <p> Veuillez sélectionner un joueur. </p>
+  </div>
+  <div class="quizzesPlayed" *ngIf="quizzesPlayed">
+    <h3> Sélectionnez le quiz :</h3>
+    <label>
+      <select [ngModel]="quizzesPlayed" (ngModelChange)="changeQuiz($event)">
+        <option></option>
+        <ng-container *ngFor="let quiz of quizzesPlayed">
+          <option [ngValue]="quiz">
+              {{ quiz.name }}
+          </option>
+        </ng-container>
+      </select>
+    </label>
+  </div>
+  <div class="noQuizSelected" *ngIf="!dataQuizSelected && quizzesPlayed">
+    <p> Veuillez sélectionner un quiz. </p>
+  </div>
+  <div class="quizzesPlayed" *ngIf="dataQuizSelected && quizzesPlayed">
+      <ng-container *ngFor="let data of dataQuizSelected">
+          Date : {{ data.date | date:'longDate' }} <br>
+          Nombre de mauvaises réponses : {{ data.nbWrongAnswer }} <br>
+          Questions échouées : <br>
+          <ng-container *ngFor="let question of data.questionsFailed">
+              {{ question.label }} <br>
+          </ng-container>
+      </ng-container>
+  </div>
+
 </div>

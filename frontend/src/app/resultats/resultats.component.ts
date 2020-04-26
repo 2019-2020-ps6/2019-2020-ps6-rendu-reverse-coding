@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {PlayerService} from "../../services/player.service";
 import {Player} from "../../models/player.model";
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {Router} from "@angular/router";
+import {Quiz} from "../../models/quiz.model";
+import {QuizService} from "../../services/quiz.service";
+import {QuizGame} from "../../models/quizgame";
 
 @Component({
   selector: 'app-resultats',
@@ -12,13 +13,29 @@ import {Router} from "@angular/router";
 export class ResultatsComponent {
 
   playerList: Player[] = [];
-  playerForm: FormGroup;
-  constructor(private playerService: PlayerService, private formBuilder: FormBuilder) {
+  quizzesPlayed: Quiz[];
+  quizGamesPlayer: QuizGame[];
+  dataQuizSelected: QuizGame[];
+  constructor(private playerService: PlayerService, private quizService: QuizService) {
       this.playerService.setPlayersFromUrl();
       this.playerService.players$.subscribe((player) => this.playerList = player);
-      this.playerForm = this.formBuilder.group({
-        player: []
-      });
   }
 
+  changePlayer(player: Player) {
+    this.quizGamesPlayer = player.quizGames;
+    const arrayQuizzes = [];
+    this.quizGamesPlayer.forEach((quizGame) => {
+        this.quizService.quizzes$.subscribe((quizzes) => {
+          const quiz = quizzes.find((q) => q.id === quizGame.quizId);
+          if (!arrayQuizzes.includes(quiz)) {
+            arrayQuizzes.push(quiz);
+          }
+        });
+    });
+    this.quizzesPlayed = arrayQuizzes;
+  }
+
+  changeQuiz(quizSelected: Quiz) {
+    this.dataQuizSelected = this.quizGamesPlayer.filter((quizGame) => quizGame.quizId === quizSelected.id);
+  }
 }
