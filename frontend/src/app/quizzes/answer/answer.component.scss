@@ -1,5 +1,11 @@
 @import '../../../styles/cards';
 
-button{
+#blocAnswer{
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#answer {
+  flex: 2;
 }
