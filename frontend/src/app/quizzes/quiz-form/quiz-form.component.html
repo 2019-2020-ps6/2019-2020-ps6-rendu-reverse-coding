@@ -16,6 +16,7 @@
       </select>
     </label>
     <br>
+    <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{ error }}</div>
     <div class="button" id="button">
         <button type="submit" class="btn btn-primary" (click)="addQuiz()">Créer</button>
     </div>

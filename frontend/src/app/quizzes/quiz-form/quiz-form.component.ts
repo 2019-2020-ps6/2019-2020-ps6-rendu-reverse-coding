@@ -10,41 +10,33 @@ import {Router} from '@angular/router';
   templateUrl: './quiz-form.component.html',
   styleUrls: ['./quiz-form.component.scss']
 })
-export class QuizFormComponent implements OnInit {
-
-  // Note: We are using here ReactiveForms to create our form. Be careful when you look for some documentation to
-  // avoid TemplateDrivenForm (another type of form)
+export class QuizFormComponent {
   /**
    * QuizForm: Object which manages the form in our component.
    * More information about Reactive Forms: https://angular.io/guide/reactive-forms#step-1-creating-a-formgroup-instance
    */
   public quizForm: FormGroup;
-  // tslint:disable-next-line:max-line-length
   public THEME_LIST: string[] = ['Animaux', 'Auto,Moto', 'Cinéma', 'Célébrité', 'Géographie', 'Gastronomie', 'Histoire', 'Littérature', 'Musique', 'Nature', 'Santé', 'Sciences', 'Sport'];
+  private error: string;
   constructor(public formBuilder: FormBuilder, private router: Router, public quizService: QuizService) {
-    // Form creation
     this.quizForm = this.formBuilder.group({
       name: [''],
       theme: [''],
       date: null
     });
-    // You can also add validators to your inputs such as required, maxlength or even create your own validator!
-    // More information: https://angular.io/guide/reactive-forms#simple-form-validation
-    // Advanced validation: https://angular.io/guide/form-validation#reactive-form-validation
-  }
-
-  ngOnInit() {
   }
 
   addQuiz() {
-    // We retrieve here the quiz object from the quizForm and we cast the type "as Quiz".
     const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
-    quizToCreate.date = new Date();
-    this.quizForm.reset();
-    quizToCreate.questions = [];
-    this.quizService.addQuiz(quizToCreate);
-    setTimeout(() => {
-      this.router.navigate(['edit-quiz/' + quizToCreate.id]);
-    }, 100);
+    if ( quizToCreate.name !== '' && quizToCreate.theme !== '') {
+      quizToCreate.date = new Date();
+      quizToCreate.questions = [];
+      this.quizService.addQuiz(quizToCreate);
+      setTimeout(() => {
+        this.router.navigate(['edit-quiz/' + quizToCreate.id]);
+      }, 100);
+    } else {
+        this.error = 'Veuillez remplir tous les champs pour créer un quiz.';
+    }
   }
 }
