@@ -1,10 +1,9 @@
 <app-header></app-header>
-<div class="resultats">
-<div class="mat-card">
+<main class="flex-container" role="main" >
+  <section id="main-section">
   <h1> Résultats </h1>
-  <div class="players" *ngIf="playerList">
-    <h3> Sélectionnez le joueur :</h3>
-    <label>
+  <section class="players" *ngIf="playerList">
+    <h3> Joueur</h3>
       <select [ngModel]="playerList" (ngModelChange)="changePlayer($event)">
         <option></option>
         <ng-container *ngFor="let player of playerList">
@@ -13,14 +12,12 @@
           </option>
         </ng-container>
       </select>
-    </label>
-  </div>
+  </section>
   <div class="noPlayerSelected" *ngIf="!quizzesPlayed">
     <p> Veuillez sélectionner un joueur. </p>
   </div>
-  <div class="quizzesPlayed" *ngIf="quizzesPlayed">
-    <h3> Sélectionnez le quiz :</h3>
-    <label>
+  <section class="quizzesPlayed" *ngIf="quizzesPlayed">
+    <h3> Quiz </h3>
       <select [ngModel]="quizzesPlayed" (ngModelChange)="changeQuiz($event)">
         <option></option>
         <ng-container *ngFor="let quiz of quizzesPlayed">
@@ -29,14 +26,13 @@
           </option>
         </ng-container>
       </select>
-    </label>
-  </div>
+  </section>
   <div class="noQuizSelected" *ngIf="!dataQuizSelected && quizzesPlayed">
     <p> Veuillez sélectionner un quiz. </p>
   </div>
-</div>
-  <div class="quizSelected" *ngIf="dataQuizSelected && quizzesPlayed">
+  <section class="quizSelected" *ngIf="dataQuizSelected && quizzesPlayed">
     <app-charts [quiz]="quizSelected" [quizGames]="dataQuizSelected" [player]="playerSelected"></app-charts>
-  </div>
+  </section>
 
-</div>
+  </section>
+</main>
