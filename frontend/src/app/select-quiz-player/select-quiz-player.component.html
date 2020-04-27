@@ -17,7 +17,6 @@
   <a routerLink="/select-quiz-player/createNewPlayer"><button class="btn btn-primary" id="nouveauJoueur" >Nouveau joueur</button></a>
   </section>
 
-
   <section id="choixQuiz">
     <h4>2. Choix du quiz</h4>
   <table class="table table-hover">
@@ -30,7 +29,7 @@
     </tr>
     </thead>
     <tbody *ngFor="let quiz of quizList ">
-    <tr *ngIf="quiz.questions.length > 0" [ngStyle]="{'background-color': quiz.id === quizIdSelected ? '#ececec' : ''}" (click)="rowSelected(quiz);" >
+    <tr *ngIf="quiz.questions.length > 0" [ngStyle]="{'background-color': quiz.id === quizIdSelected ? '#7c9fcd' : ''}" (click)="rowSelected(quiz);" >
       <td>{{quiz.name}}</td>
       <td>{{quiz.theme}}</td>
       <td class="nbQuestions">{{quiz.questions.length}}</td>

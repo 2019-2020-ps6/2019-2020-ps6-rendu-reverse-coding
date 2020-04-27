@@ -3,6 +3,9 @@
 button{
   margin:3%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 600px;
+  height: 70px;
+  font-size: 30px;
 }
 
 #answers {
@@ -12,7 +15,7 @@ button{
 }
 
 #answers:hover{
-  font-size: larger;
+  font-size: 35px;
 }
 
 .flex-container{
@@ -25,18 +28,18 @@ button{
 }
 
 #main-section{
-  margin-top: 5%;
-  width: 70%;
-  height: 700px;
+  margin-top: 3%;
+  width: 80%;
+  height: 800px;
   background-color: white;
   border-radius: 40px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#quizTitle{
-
+#answers-section {
+  height: 140px;
 }
 
-#answersAndClue{
-
+#clue {
+  background-color: #4175ba;
 }
