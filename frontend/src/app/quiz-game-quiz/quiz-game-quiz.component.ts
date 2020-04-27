@@ -90,8 +90,8 @@ export class QuizGameQuizComponent implements OnChanges {
 
   openDialogEndQuiz(): void {
     const dialogRef = this.dialog.open(DialogEndQuizComponent, {
-      width: '700px',
-      height: '200px',
+      width: '900px',
+      height: '250px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -103,8 +103,8 @@ export class QuizGameQuizComponent implements OnChanges {
 
   private openDialogEndQuestion(a: Answer) {
     const dialogRef = this.dialog.open(DialogEndQuestionComponent, {
-      width: '700px',
-      height: '200px',
+      width: '900px',
+      height: '250px',
       data: {answer: a}
     });
 
@@ -113,8 +113,8 @@ export class QuizGameQuizComponent implements OnChanges {
 
   private openDialogEndTimer(a: Answer) {
     const dialogRef = this.dialog.open(DialogEndTimerComponent, {
-      width: '700px',
-      height: '200px',
+      width: '900px',
+      height: '250px',
       data: {answer: a}
     });
     this.saveLogs();
@@ -123,8 +123,8 @@ export class QuizGameQuizComponent implements OnChanges {
 
   openDialogClue() {
     this.dialog.open(DialogClueComponent, {
-      width: '400px',
-      height: '200px',
+      width: '800px',
+      height: '250px',
       data: {clue: this.currentQuestion.clue}
     });
   }
