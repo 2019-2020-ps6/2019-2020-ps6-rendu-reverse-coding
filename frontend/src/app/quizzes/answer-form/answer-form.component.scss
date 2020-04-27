@@ -1,2 +1,24 @@
 @import '../../../styles/cards';
 
+button{
+  margin:1%;
+}
+
+input{
+  margin:2%;
+}
+
+#answer-input{
+  width: 600px;
+}
+
+#checkbox{
+ zoom: 2;
+}
+
+#answer-form{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items:center;
+}

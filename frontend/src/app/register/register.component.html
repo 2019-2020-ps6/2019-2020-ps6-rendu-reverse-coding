@@ -1,8 +1,7 @@
-<div class="card-container">
-  <div class="card">
-    <div class="card-body">
-      <h3 class="card-title">Memory Quiz</h3><br>
-      <div class="register-form" [formGroup]="registerForm">
+<main class="flex-container" role="main" >
+  <section id="main-section">
+      <h3 id="website-title">Memory Quiz</h3><br>
+      <section class="register-form" [formGroup]="registerForm">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
@@ -27,8 +26,8 @@
           </div>
           <input type="text" class="form-control" placeholder="Mot de passe" aria-label="Mot de passe" aria-describedby="basic-addon4" [formControlName]="'password'">
         </div>
-      </div><br>
+      </section>
       <button type="button" class="btn btn-primary" (click)="createUser()">Valider</button>
-    </div>
-  </div>
-</div>
+      <p>ou <a routerLink="/login">Se Connecter</a></p>
+  </section>
+</main>

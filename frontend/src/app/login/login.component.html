@@ -1,7 +1,6 @@
-<div class ="card-container">
-    <div class="card">
-      <div class="card-body">
-        <h3 class="card-title">Memory Quiz</h3><br>
+<main class="flex-container" role="main" >
+  <section id="main-section">
+        <h3 class="website-title">Memory Quiz</h3><br>
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
            <label>Email</label>
@@ -24,8 +23,6 @@
           <p>ou <a routerLink="/register">S'inscrire</a></p>
          <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
         </form>
-     </div>
-    </div>
-</div>
-
+  </section>
+</main>
 

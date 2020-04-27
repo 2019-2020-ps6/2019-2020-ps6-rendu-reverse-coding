@@ -1,10 +1,8 @@
-<div class="answer-form" [formGroup]="answerForm">
-   <label>
+<section id="answer-form" [formGroup]="answerForm">
       Réponse
-      <input type="text" [formControlName]="'value'">
+      <input id="answer-input" type="text" [formControlName]="'value'">
       Correcte
-      <input type="checkbox" [formControlName]="'isCorrect'" >
+      <input id="checkbox" type="checkbox" [formControlName]="'isCorrect'" >
       <button class="btn btn-primary" (click)="addAnswer()">Ajouter</button>
-   </label>
-</div>
+</section>
 

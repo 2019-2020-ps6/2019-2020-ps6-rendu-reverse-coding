@@ -1,5 +1,5 @@
-<div class="card">
-  <div class="card-header" *ngIf="question">
+<section id="question-section">
+  <div class="header" *ngIf="question">
     <h4> Question n° {{ question.numero }} : {{ question.label }}</h4>
     <div class="answer-form" *ngIf="question.answers.length < 4">
       <app-answer-form [question]="question"></app-answer-form>
@@ -12,4 +12,4 @@
   <section>
   <button class="btn btn-primary" (click)="deleteQuestion()">Supprimer cette question</button>
   </section>
-</div>
+</section>
