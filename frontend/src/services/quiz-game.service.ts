@@ -3,6 +3,7 @@ import {QuizGame} from '../models/quizgame';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject} from 'rxjs';
 import {Question} from "../models/question.model";
+import {Quiz} from '../models/quiz.model';
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +38,22 @@ export class QuizGameService {
   updateQuizGame(quizGameId: number, nbWA: number, questionsF: Question[]) {
     this.http.put<QuizGame[]>('http://localhost:9428/api/quizgames/' + quizGameId , {nbWrongAnswer: nbWA, questionsFailed: questionsF} )
       .subscribe();
+  }
+
+  deleteQuizGamesInBack(quiz: Quiz) {
+    const quizGamesToDelete = [];
+    this.quizGames.forEach((quizgame) => {
+        if (quizgame.quizId === quiz.id) {
+            quizGamesToDelete.push(quizgame);
+            this.http.delete<QuizGame>('http://localhost:9428/api/quizgames/' + quizgame.id).subscribe(
+            (res) => console.log(res),
+            (err) => console.log(err)
+            );
+        }
+    });
+    quizGamesToDelete.forEach((quizgame) => {
+      this.quizGames.splice(this.quizGames.indexOf(quizgame), 1);
+      this.quizGames$.next(this.quizGames);
+    });
   }
 }

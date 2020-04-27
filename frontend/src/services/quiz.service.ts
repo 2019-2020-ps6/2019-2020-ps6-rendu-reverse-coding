@@ -5,6 +5,8 @@ import {HttpClient} from '@angular/common/http';
 import {UserService} from './user.service';
 import {User} from '../models/user.model';
 import {QuestionService} from './question.service';
+import {QuizGameComponent} from '../app/quiz-game/quiz-game.component';
+import {QuizGameService} from './quiz-game.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,7 @@ export class QuizService {
    * Naming convention: Add '$' at the end of the variable name to highlight it as an Observable.
    */
   public quizzes$: BehaviorSubject<Quiz[]> = new BehaviorSubject(this.quizzes);
-  constructor(private http: HttpClient, private userService: UserService, private questionService: QuestionService) {
+  constructor(private http: HttpClient, private userService: UserService, private questionService: QuestionService, private quizGameService: QuizGameService) {
     this.setQuizzesFromUrl();
   }
 
@@ -34,7 +36,7 @@ export class QuizService {
   deleteQuiz(quiz: Quiz) {
     this.quizzes.splice(this.quizzes.indexOf(quiz), 1);
     this.quizzes$.next(this.quizzes);
-
+    this.deleteQuizGamesAssociateToQuiz(quiz);
     this.deleteQuestionsAssociateToQuiz(quiz);
     this.http.delete<Quiz>(this.userService.usersUrl + this.userService.curentUser.id + '/quizzes/' + quiz.id).subscribe(
       (res) => console.log(res),
@@ -46,6 +48,10 @@ export class QuizService {
     quiz.questions.forEach((question) => {
       this.questionService.deleteQuestionInBack(question, quiz);
     });
+  }
+
+  deleteQuizGamesAssociateToQuiz(quiz: Quiz) {
+    this.quizGameService.deleteQuizGamesInBack(quiz);
   }
 
   setQuizzesFromUrl() {
