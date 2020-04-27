@@ -16,6 +16,8 @@ export class ResultatsComponent {
   quizzesPlayed: Quiz[];
   quizGamesPlayer: QuizGame[];
   dataQuizSelected: QuizGame[];
+  playerSelected: Player;
+  quizSelected: Quiz;
   constructor(private playerService: PlayerService, private quizService: QuizService) {
       this.playerService.setPlayersFromUrl();
       this.playerService.players$.subscribe((player) => this.playerList = player);
@@ -23,7 +25,8 @@ export class ResultatsComponent {
 
   changePlayer(player: Player) {
     if (player) {
-      this.quizGamesPlayer = player.quizGames;
+      this.playerSelected = player;
+      this.quizGamesPlayer = this.playerSelected.quizGames;
       const arrayQuizzes = [];
       this.quizGamesPlayer.forEach((quizGame) => {
         this.quizService.quizzes$.subscribe((quizzes) => {
@@ -40,6 +43,7 @@ export class ResultatsComponent {
   }
 
   changeQuiz(quizSelected: Quiz) {
-    this.dataQuizSelected = this.quizGamesPlayer.filter((quizGame) => quizGame.quizId === quizSelected.id);
+    this.quizSelected = quizSelected;
+    this.dataQuizSelected = this.quizGamesPlayer.filter((quizGame) => quizGame.quizId === this.quizSelected.id);
   }
 }

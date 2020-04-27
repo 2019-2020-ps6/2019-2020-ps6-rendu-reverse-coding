@@ -35,15 +35,8 @@
     <p> Veuillez sélectionner un quiz. </p>
   </div>
 </div>
-  <div class="quizzesPlayed" *ngIf="dataQuizSelected && quizzesPlayed">
-      <ng-container *ngFor="let data of dataQuizSelected">
-          Date : {{ data.date | date:'longDate' }} <br>
-          Nombre de mauvaises réponses : {{ data.nbWrongAnswer }} <br>
-          Questions échouées : <br>
-          <ng-container *ngFor="let question of data.questionsFailed">
-              {{ question.label }} <br>
-          </ng-container>
-      </ng-container>
+  <div class="quizSelected" *ngIf="dataQuizSelected && quizzesPlayed">
+    <app-charts [quiz]="quizSelected" [quizGames]="dataQuizSelected" [player]="playerSelected"></app-charts>
   </div>
 
 </div>

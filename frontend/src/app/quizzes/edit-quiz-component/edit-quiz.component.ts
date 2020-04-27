@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Quiz} from '../../../models/quiz.model';
-import { Location } from '@angular/common';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {QuizService} from '../../../services/quiz.service';
 
 @Component({
@@ -14,17 +13,17 @@ export class EditQuizComponent {
   quizzes: Quiz[];
   constructor(private route: ActivatedRoute,
               private quizService: QuizService,
-              private location: Location) {
+              private router: Router) {
     const id = +this.route.snapshot.paramMap.get('id');
     setTimeout(() => {
       this.quizService.quizzes$.subscribe((quiz) => {
         this.quizzes = quiz;
         this.quiz = this.quizzes.find((q) => q.id === id);
       });
-    }, 300);
+    }, 100);
   }
 
-  goBack(): void {
-    this.location.back();
+  back() {
+    this.router.navigate(['/modif-quiz']);
   }
 }

@@ -27,4 +27,9 @@ export class DialogEndQuizComponent implements OnInit {
   backHome() {
     this.dialogRef.close();
   }
+
+  seeResults() {
+    this.router.navigate(['resultats']);
+    this.dialogRef.close(true);
+  }
 }

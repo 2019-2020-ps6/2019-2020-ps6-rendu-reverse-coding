@@ -29,7 +29,7 @@ export class SelectQuizPlayerComponent implements OnInit {
 
   ngOnInit() {
     this.playerForm = this.formBuilder.group({
-      id: []
+      id: ['']
     });
   }
 

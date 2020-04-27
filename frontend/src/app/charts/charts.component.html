@@ -1,11 +1,39 @@
-<div style="display: block;">
-  <canvas baseChart width="400" height="400"
-          [datasets]="lineChartData"
-          [labels]="lineChartLabels"
-          [options]="lineChartOptions"
-          [colors]="lineChartColors"
-          [legend]="lineChartLegend"
-          [chartType]="lineChartType"
-          [plugins]="lineChartPlugins">
-  </canvas>
+<div id="data" *ngIf="quizGames && quiz && player">
+  <h1> Résultats de {{ player.name }} {{ player.surname }} sur le quiz "{{ quiz.name }}" </h1>
+  <div id="listeQuizGames" >
+    <div class="mat-card" >
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="nom" scope="col">Date</th>
+            <th class="theme" scope="col">Nombre de questions réussies</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let quizgame of quizGames ">
+          <tr>
+            <td>{{quizgame.date | date:'longDate' }}</td>
+            <td>{{ quiz.questions.length - quizgame.questionsFailed.length }}/{{ quiz.questions.length }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="listeQuestionsEchouees">
+    <div class="mat-card" >
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th class="nom" scope="col">Questions</th>
+          <th class="theme" scope="col">Nombre d'échec (sur {{ quizGames.length }} parties)</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let question of quiz.questions ">
+        <tr>
+          <td>{{ question.label }}</td>
+          <td> {{ mapQuestions.get(question.label) }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

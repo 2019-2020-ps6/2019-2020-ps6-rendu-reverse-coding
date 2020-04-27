@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 
 import {QuizService} from '../../../services/quiz.service';
 import {Quiz} from '../../../models/quiz.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-quiz-form',
@@ -20,7 +21,7 @@ export class QuizFormComponent implements OnInit {
   public quizForm: FormGroup;
   // tslint:disable-next-line:max-line-length
   public THEME_LIST: string[] = ['Animaux', 'Auto,Moto', 'Cinéma', 'Célébrité', 'Géographie', 'Gastronomie', 'Histoire', 'Littérature', 'Musique', 'Nature', 'Santé', 'Sciences', 'Sport'];
-  constructor(public formBuilder: FormBuilder, public quizService: QuizService) {
+  constructor(public formBuilder: FormBuilder, private router: Router, public quizService: QuizService) {
     // Form creation
     this.quizForm = this.formBuilder.group({
       name: [''],
@@ -42,6 +43,8 @@ export class QuizFormComponent implements OnInit {
     this.quizForm.reset();
     quizToCreate.questions = [];
     this.quizService.addQuiz(quizToCreate);
+    setTimeout(() => {
+      this.router.navigate(['edit-quiz/' + quizToCreate.id]);
+    }, 100);
   }
-
 }

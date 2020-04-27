@@ -1,6 +1,7 @@
 <app-header></app-header>
 <main class="flex-container" role="main" >
 <section id="main-section" >
+  <h4> Création d'un nouveau quiz </h4>
   <form class="quiz-form" [formGroup]="quizForm">
     <label for="name">
       <input class="form-control" type="text" id="name" [formControlName]="'name'" placeholder="Nom du Quiz">
@@ -15,15 +16,9 @@
       </select>
     </label>
     <br>
-    <div class="button">
-       <a routerLink="/modif-quiz">
-        <button type="submit" class="btn btn-primary" (click)="addQuiz()">Créer le Quiz</button>
-       </a>
+    <div class="button" id="button">
+        <button type="submit" class="btn btn-primary" (click)="addQuiz()">Créer</button>
     </div>
   </form>
 </section>
 </main>
-
-
-<!-- Uncomment below to see your form structure and how it changes-->
-<!-- <br><br>{{quizForm.getRawValue() | json}} -->

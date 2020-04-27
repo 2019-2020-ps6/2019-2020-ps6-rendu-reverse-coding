@@ -16,15 +16,6 @@
   background-color: white;
   border-radius: 40px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-}
-
-#choixJoueur{
-
-}
-
-#choixQuiz {
-
 }
 
 select{
@@ -32,28 +23,32 @@ select{
   border-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   cursor:pointer;
-  appearance: none;
-  width: 200px;
+  width: 230px;
   height: 45px;
   padding: 5px;
-
 }
 
 table,th,td{
   border:none;
-
 }
 
+th {
+  font-size: 27px;
+}
 
 button{
   margin-bottom: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#nouveauJoueur{ width: 200px;}
-
+#nouveauJoueur{
+  width: 230px;
+}
 
 .nom, .theme, .nbQuestions { width: 33%; }
 
-h5{ margin:20px }
+h4{
+  margin:20px;
+  padding: 10px;
+}
 
