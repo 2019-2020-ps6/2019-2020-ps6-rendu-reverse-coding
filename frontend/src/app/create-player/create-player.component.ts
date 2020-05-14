@@ -11,7 +11,7 @@ import {PlayerService} from '../../services/player.service';
 })
 export class CreatePlayerComponent implements OnInit {
   newPlayerForm: FormGroup;
-
+  linkReturn = '/select-quiz-player';
   constructor(public formBuilder: FormBuilder, private playerService: PlayerService, private router: Router) { }
 
   ngOnInit() {

@@ -21,7 +21,7 @@ import { RegisterComponent } from './register/register.component';
 import { SelectQuizPlayerComponent } from './select-quiz-player/select-quiz-player.component';
 import { CreatePlayerComponent } from './create-player/create-player.component';
 import { QuizGameComponent } from './quiz-game/quiz-game.component';
-import { QuizGameQuizComponent } from './quiz-game-quiz/quiz-game-quiz.component';
+import { QuizGamePlayComponent } from './quiz-game-quiz/quiz-game-play.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogEndQuizComponent } from './dialog-end-quiz/dialog-end-quiz.component';
@@ -55,7 +55,7 @@ import { ChartsComponent } from './charts/charts.component';
     SelectQuizPlayerComponent,
     CreatePlayerComponent,
     QuizGameComponent,
-    QuizGameQuizComponent,
+    QuizGamePlayComponent,
     DialogEndQuizComponent,
     DialogEndQuestionComponent,
     DialogEndTimerComponent,

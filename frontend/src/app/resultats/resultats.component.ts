@@ -18,6 +18,7 @@ export class ResultatsComponent {
   dataQuizSelected: QuizGame[];
   playerSelected: Player;
   quizSelected: Quiz;
+  linkReturn = '/home';
   constructor(private playerService: PlayerService, private quizService: QuizService) {
       this.playerService.setPlayersFromUrl();
       this.playerService.players$.subscribe((player) => this.playerList = player);

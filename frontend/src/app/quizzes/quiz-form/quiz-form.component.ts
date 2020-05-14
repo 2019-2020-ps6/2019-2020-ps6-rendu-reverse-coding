@@ -16,6 +16,7 @@ export class QuizFormComponent {
    * More information about Reactive Forms: https://angular.io/guide/reactive-forms#step-1-creating-a-formgroup-instance
    */
   public quizForm: FormGroup;
+  linkReturn = '/gestion';
   public THEME_LIST: string[] = ['Animaux', 'Auto,Moto', 'Cinéma', 'Célébrité', 'Géographie', 'Gastronomie', 'Histoire', 'Littérature', 'Musique', 'Nature', 'Santé', 'Sciences', 'Sport'];
   private error: string;
   constructor(public formBuilder: FormBuilder, private router: Router, public quizService: QuizService) {

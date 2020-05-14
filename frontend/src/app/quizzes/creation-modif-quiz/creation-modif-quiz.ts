@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-creation-modif',
@@ -8,4 +8,5 @@ import {Component, OnInit} from '@angular/core';
 
 
 export class CreationModifQuiz {
+  linkReturn = '/home';
 }

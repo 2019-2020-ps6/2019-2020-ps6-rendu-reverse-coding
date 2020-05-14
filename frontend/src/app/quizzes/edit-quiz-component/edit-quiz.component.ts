@@ -11,6 +11,7 @@ import {QuizService} from '../../../services/quiz.service';
 export class EditQuizComponent {
   quiz: Quiz;
   quizzes: Quiz[];
+  linkReturn = '/modif-quiz';
   constructor(private route: ActivatedRoute,
               private quizService: QuizService,
               private router: Router) {

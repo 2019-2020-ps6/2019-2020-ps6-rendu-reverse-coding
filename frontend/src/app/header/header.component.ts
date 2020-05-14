@@ -13,6 +13,8 @@ export class HeaderComponent {
   inQuizGame: boolean;
   @Input()
   timer: any;
+  @Input()
+  linkReturn: string;
   currentUser: User;
   constructor(
     private router: Router,

@@ -5,7 +5,6 @@ import {HttpClient} from '@angular/common/http';
 import {UserService} from './user.service';
 import {User} from '../models/user.model';
 import {QuestionService} from './question.service';
-import {QuizGameComponent} from '../app/quiz-game/quiz-game.component';
 import {QuizGameService} from './quiz-game.service';
 
 @Injectable({
