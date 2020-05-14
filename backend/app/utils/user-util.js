@@ -83,14 +83,14 @@ function associateAllAnswers() {
 
 function associateAnswers(questionId) {
     const question = Question.getById(questionId)
-    const answers = Answer.get()
+    const answers = Answer.get();
     return {...question, answers : answers.filter((answer) =>
             answer.questionId === question.id
         )};
 }
 
-function associateAllQuizGames() {
-    const players = Player.get();
+function associateAllQuizGames(userId) {
+    const players = Player.get().filter((player) => player.userId === parseInt(userId));
     const quizgames = QuizGame.get();
     const playersWithQuizGames = players.map((player) => {
         return {...player, quizGames: quizgames.filter((quizGame) =>
