@@ -12,10 +12,10 @@ import {DialogClueComponent} from '../dialog-clue/dialog-clue.component';
 
 @Component({
   selector: 'app-quiz-game-quiz',
-  templateUrl: './quiz-game-quiz.component.html',
-  styleUrls: ['./quiz-game-quiz.component.scss']
+  templateUrl: './quiz-game-play.component.html',
+  styleUrls: ['./quiz-game-play.component.scss']
 })
-export class QuizGameQuizComponent implements OnChanges {
+export class QuizGamePlayComponent implements OnChanges {
   @Input()
   public quizPlayed: Quiz;
   public currentQuestion: Question;

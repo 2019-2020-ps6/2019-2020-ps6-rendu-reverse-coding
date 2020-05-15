@@ -12,7 +12,7 @@ import {DialogDeleteQuizComponent} from '../dialog-delete-quiz/dialog-delete-qui
 export class QuizListComponent implements OnInit {
 
   public quizList: Quiz[] = [];
-
+  linkReturn = '/gestion';
   constructor(public quizService: QuizService, public dialog: MatDialog) {
     this.quizService.quizzes$.subscribe((quiz) => this.quizList = quiz);
   }

@@ -19,7 +19,7 @@ export class SelectQuizPlayerComponent implements OnInit {
   public playerList: Player[];
   public playerForm: FormGroup;
   public quizGame: QuizGame = {};
-
+  linkReturn = '/home';
   constructor(public quizService: QuizService, private playerService: PlayerService,
               private quizGameService: QuizGameService, private router: Router,
               private formBuilder: FormBuilder) {

@@ -9,7 +9,6 @@ const router = new Router()
 
 router.get('/', (req, res) => {
   try {
-    console.log(req.params)
     const quizzesWithQuestions = util.associateAllQuestions();
     res.status(200).json(quizzesWithQuestions)
   } catch (err) {

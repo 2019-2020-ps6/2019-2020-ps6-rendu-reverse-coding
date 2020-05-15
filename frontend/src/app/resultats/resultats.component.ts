@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PlayerService} from '../../services/player.service';
 import {Player} from '../../models/player.model';
 import {Quiz} from '../../models/quiz.model';
@@ -18,6 +18,7 @@ export class ResultatsComponent {
   dataQuizSelected: QuizGame[];
   playerSelected: Player;
   quizSelected: Quiz;
+  linkReturn = '/home';
   constructor(private playerService: PlayerService, private quizService: QuizService) {
       this.playerService.setPlayersFromUrl();
       this.playerService.players$.subscribe((player) => this.playerList = player);
