@@ -1,9 +1,14 @@
-<section id="main-section">
-<h2 style="text-align: center; font-weight: bold"> Réponses données aux questions échouées </h2><br>
-<section class="questionsFailed" id="questionsFailed-section" *ngFor="let question of data.questionsFailed">
+<section id="main-section" >
+<h1 style="text-align: center; font-weight: bold"> Résumé de la partie </h1><br>
+<h3 *ngIf="data.questionsFailed.length === 0">Aucune faute lors de cette partie ! </h3><br>
+
+<section  id="questions-section" *ngFor="let question of data.questions">
   {{question.label}}<br>
-  <section class="selectedAnswer" id="selected-answers-section" *ngFor="let answer of data.selectedAnswers">
-    <div *ngIf="question.id === answer.questionId">
+  <section *ngFor="let answer of data.selectedAnswers">
+    <div id="wrongly-selected-answers"*ngIf="question.id === answer.questionId && !answer.isCorrect">
+      {{answer.value}}
+    </div>
+    <div id="good-answer" *ngIf="question.id === answer.questionId && answer.isCorrect">
       {{answer.value}}
     </div>
   </section><br>

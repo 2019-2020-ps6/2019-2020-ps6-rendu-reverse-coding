@@ -42,11 +42,11 @@ export class ChartsComponent  implements OnChanges {
 
   }
 
-  openDialogResults(wrongSelectedAnswers: Answer[], listQuestionsFailed: Question[]) {
+  openDialogResults(wrongSelectedAnswers: Answer[], listQuestionsFailed: Question[], listAllQuestions: Question[]) {
     this.dialog.open(DialogResultsComponent, {
       width: 'auto',
       height: 'auto',
-      data: { selectedAnswers: wrongSelectedAnswers, questionsFailed: listQuestionsFailed }
+      data: { selectedAnswers: wrongSelectedAnswers, questionsFailed: listQuestionsFailed, questions: listAllQuestions }
     });
   }
 }

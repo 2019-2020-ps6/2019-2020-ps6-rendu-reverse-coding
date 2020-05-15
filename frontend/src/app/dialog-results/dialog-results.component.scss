@@ -1,15 +1,17 @@
 
-
+h3{
+  color: darkgreen;
+}
 #main-section{
   text-align: center;
-}
-
-div {
-  color: darkred;
-}
-
-.questionsFailed{
   font-size: larger;
 }
 
+#wrongly-selected-answers {
+  color: darkred;
+}
 
+
+#good-answer{
+  color: darkgreen;
+}

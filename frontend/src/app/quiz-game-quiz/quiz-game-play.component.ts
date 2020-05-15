@@ -63,17 +63,17 @@ export class QuizGamePlayComponent implements OnChanges {
   }
 
   isCorrect(answer: Answer) {
+    this.saveAnswerSelected(answer);
     if (answer.isCorrect) {
       this.stopTimer();
       this.openDialogEndQuestion(answer);
     } else {
-      this.saveLogs2(answer);
       this.saveLogs();
       this.answersClone.splice(this.answersClone.indexOf(answer), 1);
     }
   }
 
-  private saveLogs2(answer: Answer) {
+  private saveAnswerSelected(answer: Answer) {
     this.selectedAnswers.push(answer);
   }
 
