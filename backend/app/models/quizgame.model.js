@@ -7,6 +7,7 @@ module.exports = new BaseModel('QuizGame', {
     nbWrongAnswer: Joi.number().required(),
     questionsFailed: Joi.array().required(),
     date: Joi.date(),
+    selectedAnswers: Joi.array(),
 })
 
 

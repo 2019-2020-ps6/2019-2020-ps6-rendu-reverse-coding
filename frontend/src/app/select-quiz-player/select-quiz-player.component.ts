@@ -44,6 +44,7 @@ export class SelectQuizPlayerComponent implements OnInit {
     this.quizGame.nbWrongAnswer = 0;
     this.quizGame.questionsFailed = [];
     this.quizGame.date = new Date();
+    this.quizGame.selectedAnswers = [];
     this.quizGameService.createQuizGame(this.quizGame);
     // A améliorer (attendre tant que l'id de quizgame est undefined)
     setTimeout(() => {

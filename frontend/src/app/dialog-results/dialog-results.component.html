@@ -1,0 +1,11 @@
+<section id="main-section">
+<h2 style="text-align: center; font-weight: bold"> Réponses données aux questions échouées </h2><br>
+<section class="questionsFailed" id="questionsFailed-section" *ngFor="let question of data.questionsFailed">
+  {{question.label}}<br>
+  <section class="selectedAnswer" id="selected-answers-section" *ngFor="let answer of data.selectedAnswers">
+    <div *ngIf="question.id === answer.questionId">
+      {{answer.value}}
+    </div>
+  </section><br>
+</section>
+</section>

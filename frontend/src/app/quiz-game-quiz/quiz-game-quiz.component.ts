@@ -24,6 +24,7 @@ export class QuizGameQuizComponent implements OnChanges {
   public indiceCurrentQuestion = 0;
   public nbWrongAnswers = 0;
   public questionsFailed = [];
+  public selectedAnswers = [];
   private timer;
 
   constructor(private route: ActivatedRoute, private quizGameService: QuizGameService, public dialog: MatDialog,
@@ -49,7 +50,7 @@ export class QuizGameQuizComponent implements OnChanges {
           this.startTimer(correctAnswer);
         } else {
           this.openDialogEndQuiz();
-          this.quizGameService.updateQuizGame(this.quizGameId, this.nbWrongAnswers, this.questionsFailed);
+          this.quizGameService.updateQuizGame(this.quizGameId, this.nbWrongAnswers, this.questionsFailed, this.selectedAnswers);
         }
       });
   }
@@ -66,9 +67,14 @@ export class QuizGameQuizComponent implements OnChanges {
       this.stopTimer();
       this.openDialogEndQuestion(answer);
     } else {
+      this.saveLogs2(answer);
       this.saveLogs();
       this.answersClone.splice(this.answersClone.indexOf(answer), 1);
     }
+  }
+
+  private saveLogs2(answer: Answer) {
+    this.selectedAnswers.push(answer);
   }
 
   private saveLogs() {

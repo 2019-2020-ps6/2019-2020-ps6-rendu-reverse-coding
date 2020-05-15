@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject} from 'rxjs';
 import {Question} from "../models/question.model";
 import {Quiz} from '../models/quiz.model';
+import {Answer} from '../models/answer.model';
 
 @Injectable({
   providedIn: 'root'
@@ -35,8 +36,8 @@ export class QuizGameService {
     );
   }
 
-  updateQuizGame(quizGameId: number, nbWA: number, questionsF: Question[]) {
-    this.http.put<QuizGame[]>('http://localhost:9428/api/quizgames/' + quizGameId , {nbWrongAnswer: nbWA, questionsFailed: questionsF} )
+  updateQuizGame(quizGameId: number, nbWA: number, questionsF: Question[], wronglySelectedAnswer: Answer[]) {
+    this.http.put<QuizGame[]>('http://localhost:9428/api/quizgames/' + quizGameId , {nbWrongAnswer: nbWA, questionsFailed: questionsF, selectedAnswers: wronglySelectedAnswer} )
       .subscribe();
   }
 

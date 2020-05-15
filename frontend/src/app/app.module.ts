@@ -34,6 +34,8 @@ import { ResultatsComponent } from './resultats/resultats.component';
 import {CreationModifQuiz} from './quizzes/creation-modif-quiz/creation-modif-quiz';
 import {ChartsModule} from 'ng2-charts';
 import { ChartsComponent } from './charts/charts.component';
+import { DialogResultsComponent } from './dialog-results/dialog-results.component';
+
 
 @NgModule({
   declarations: [
@@ -63,6 +65,7 @@ import { ChartsComponent } from './charts/charts.component';
     DialogDeleteQuizComponent,
     ResultatsComponent,
     ChartsComponent,
+    DialogResultsComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,7 +83,8 @@ import { ChartsComponent } from './charts/charts.component';
     DialogEndQuestionComponent,
     DialogEndTimerComponent,
     DialogClueComponent,
-    DialogDeleteQuizComponent
+    DialogDeleteQuizComponent,
+    DialogResultsComponent
   ],
   providers: [
   ],

@@ -1,4 +1,5 @@
 import {Question} from './question.model';
+import {Answer} from './answer.model';
 
 export interface QuizGame {
   id?: number;
@@ -7,4 +8,5 @@ export interface QuizGame {
   nbWrongAnswer?: number;
   questionsFailed?: Question[];
   date?: Date;
+  selectedAnswers?: Answer[];
 }

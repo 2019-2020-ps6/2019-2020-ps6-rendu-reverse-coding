@@ -14,6 +14,7 @@ import {CreatePlayerComponent} from './create-player/create-player.component';
 import {QuizGameComponent} from './quiz-game/quiz-game.component';
 import {ResultatsComponent} from './resultats/resultats.component';
 
+
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'gestion', component: CreationModifQuiz, canActivate: [AuthGuard] },

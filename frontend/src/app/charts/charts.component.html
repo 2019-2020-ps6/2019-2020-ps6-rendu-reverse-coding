@@ -6,13 +6,16 @@
           <tr>
             <th class="nom" scope="col">Date</th>
             <th class="theme" scope="col">Nombre de questions réussies</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody *ngFor="let quizgame of quizGames ">
           <tr>
             <td>{{quizgame.date | date:'longDate' }}</td>
             <td>{{ quiz.questions.length - quizgame.questionsFailed.length }}/{{ quiz.questions.length }}</td>
+            <td><button class="btn btn-primary" (click)="openDialogResults(quizgame.selectedAnswers, quizgame.questionsFailed);" >Détail</button></td>
           </tr>
+
         </tbody>
       </table>
   </section>
