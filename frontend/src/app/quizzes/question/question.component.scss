@@ -1,10 +1,9 @@
 @import '../../../styles/cards';
 
-#question-section{
+#question-section {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 40px;
   margin:5%;
-
 }
 
 button{
@@ -13,3 +12,16 @@ button{
   border-color: #4175ba;
 }
 
+#clue-input {
+  width: 60%;
+}
+
+#num-question {
+  padding: 2%;
+  border-radius: 40px;
+}
+
+#deleteQuestion, #deleteClue, #deleteQuestion:hover, #deleteClue:hover{
+  background-color: #C71200;
+  border-color: #C71200;
+}

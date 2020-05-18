@@ -6,6 +6,7 @@ import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from './user.service';
 import {AnswerService} from './answer.service';
+import {QuizGame} from '../models/quizgame';
 
 @Injectable({
   providedIn: 'root'
@@ -52,5 +53,15 @@ export class QuestionService {
     question.answers.forEach((answer) => {
       this.answerService.deleteAnswerInBack(answer, question);
     });
+  }
+
+  addClue(q: Question) {
+    this.http.put<Question>(this.userService.usersUrl + this.userService.curentUser.id + '/quizzes/' + q.quizId + '/questions/' + q.id, {clue: q.clue})
+      .subscribe();
+  }
+
+  deleteClue(q: Question) {
+    this.http.put<Question>(this.userService.usersUrl + this.userService.curentUser.id + '/quizzes/' + q.quizId + '/questions/' + q.id, {clue: q.clue})
+      .subscribe();
   }
 }
