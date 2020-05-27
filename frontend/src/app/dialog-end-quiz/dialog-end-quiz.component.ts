@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {Answer} from '../../models/answer.model';
+import {Question} from '../../models/question.model';
+import {DialogResultsComponent} from '../dialog-results/dialog-results.component';
+import {DialogData} from '../../models/dialogData';
 
 @Component({
   selector: 'app-dialog-end-quiz',
@@ -9,7 +13,8 @@ import {MatDialogRef} from '@angular/material/dialog';
 })
 export class DialogEndQuizComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<DialogEndQuizComponent>, private router: Router) { }
+  constructor(public dialogRef: MatDialogRef<DialogEndQuizComponent>, public dialog: MatDialog,
+              private router: Router, @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
   ngOnInit() {
   }
@@ -29,7 +34,15 @@ export class DialogEndQuizComponent implements OnInit {
   }
 
   seeResults() {
-    this.router.navigate(['resultats']);
+   // this.router.navigate(['resultats']);
+   /* this.dialog.open(DialogResultsComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: { selectedAnswers: this.data.quizGame.selectedAnswers , questionsFailed: this.data.quizGame.questionsFailed, questions: this.data.quizGame.quiz.questions }});
     this.dialogRef.close(true);
+    
+    */
+    console.log(this.data.quizGame.selectedAnswers);
   }
+
 }

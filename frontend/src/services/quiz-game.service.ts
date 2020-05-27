@@ -11,14 +11,19 @@ import {Answer} from '../models/answer.model';
 })
 export class QuizGameService {
   private quizGames: QuizGame[];
+  private quizGame: QuizGame;
   /**
    * Observable which contains the list of the quiz.
    * Naming convention: Add '$' at the end of the variable name to highlight it as an Observable.
    */
+  public quizGame$: BehaviorSubject<QuizGame> = new BehaviorSubject(this.quizGame);
+
   public quizGames$: BehaviorSubject<QuizGame[]> = new BehaviorSubject(this.quizGames);
   constructor(private http: HttpClient) {
     this.setQuizGamesFromUrl();
   }
+
+
 
   private setQuizGamesFromUrl() {
     this.http.get<QuizGame[]>('http://localhost:9428/api/quizgames').subscribe((object) => {
@@ -55,6 +60,13 @@ export class QuizGameService {
     quizGamesToDelete.forEach((quizgame) => {
       this.quizGames.splice(this.quizGames.indexOf(quizgame), 1);
       this.quizGames$.next(this.quizGames);
+    });
+  }
+
+  getQuizById(quizGameId: number) {
+    this.http.get<QuizGame>('http://localhost:9428/api/quizgames/' + quizGameId).subscribe((object) => {
+      this.quizGame = object;
+      this.quizGame$.next(this.quizGame);
     });
   }
 }

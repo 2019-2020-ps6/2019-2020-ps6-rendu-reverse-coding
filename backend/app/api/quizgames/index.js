@@ -11,16 +11,16 @@ router.get('/', (req, res) => {
     }
 })
 
-/*
+
 router.get('/:quizGameId', (req, res) => {
     try {
-
-        res.status(200).json(userWithPlayers)
+        const quizGame = QuizGame.getById(req.params.quizGameId)
+        res.status(200).json(quizGame)
     } catch (err) {
         res.status(500).json(err)
     }
 })
-*/
+
 
 router.delete('/:quizGameId', (req, res) => {
     try {

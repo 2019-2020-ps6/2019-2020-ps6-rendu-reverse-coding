@@ -9,6 +9,8 @@ import {DialogEndQuizComponent} from '../dialog-end-quiz/dialog-end-quiz.compone
 import {DialogEndQuestionComponent} from '../dialog-end-question/dialog-end-question.component';
 import {DialogEndTimerComponent} from '../dialog-end-timer/dialog-end-timer.component';
 import {DialogClueComponent} from '../dialog-clue/dialog-clue.component';
+import {DialogResultsComponent} from '../dialog-results/dialog-results.component';
+import {QuizGame} from '../../models/quizgame';
 
 @Component({
   selector: 'app-quiz-game-quiz',
@@ -27,6 +29,7 @@ export class QuizGamePlayComponent implements OnChanges {
   public selectedAnswers = [];
   private timer;
 
+
   constructor(private route: ActivatedRoute, private quizGameService: QuizGameService, public dialog: MatDialog,
               private router: Router) {
     this.quizGameId = +this.route.snapshot.paramMap.get('id');
@@ -41,6 +44,8 @@ export class QuizGamePlayComponent implements OnChanges {
     }
   }
 
+
+
   private afterCloseDialog(dialogRef: MatDialogRef<DialogEndTimerComponent, any>) {
       dialogRef.afterClosed().subscribe(result => {
         if ( this.indiceCurrentQuestion + 1 < this.quizPlayed.questions.length) {
@@ -49,8 +54,13 @@ export class QuizGamePlayComponent implements OnChanges {
           const correctAnswer = this.currentQuestion.answers.find((answer) => answer.isCorrect === true );
           this.startTimer(correctAnswer);
         } else {
-          this.openDialogEndQuiz();
           this.quizGameService.updateQuizGame(this.quizGameId, this.nbWrongAnswers, this.questionsFailed, this.selectedAnswers);
+          this.quizGameService.getQuizById(this.quizGameId);
+          this.quizGameService.quizGame$.subscribe((quizGame) => {
+            this.openDialogEndQuiz(quizGame);
+          });
+
+
         }
       });
   }
@@ -94,10 +104,12 @@ export class QuizGamePlayComponent implements OnChanges {
     clearTimeout(this.timer);
   }
 
-  openDialogEndQuiz(): void {
+  openDialogEndQuiz(quizG: QuizGame): void {
     const dialogRef = this.dialog.open(DialogEndQuizComponent, {
       width: '900px',
       height: '250px',
+      data: { quizGame: quizG }
+
     });
 
     dialogRef.afterClosed().subscribe(result => {
