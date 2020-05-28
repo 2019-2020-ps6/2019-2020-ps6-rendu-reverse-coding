@@ -40,7 +40,7 @@ export class DialogEndQuizComponent implements OnInit {
       height: 'auto',
       data: { selectedAnswers: this.data.quizGame.selectedAnswers , questionsFailed: this.data.quizGame.questionsFailed, questions: this.data.quizGame.quiz.questions }});
     this.dialogRef.close(true);
-    
+
     */
     console.log(this.data.quizGame.selectedAnswers);
   }
